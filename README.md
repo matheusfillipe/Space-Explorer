@@ -15,7 +15,15 @@ Proof of concept newtonian gravity simulator using godot's physics engine. You c
 #### Camera controls
 
 * Numpad arrows to detach frmo the ship and move the camera around: 2 6 4 8
-* + to zoom in
-* - to zoom out
+* '+' to zoom in
+* '-' to zoom out
 * = resets zoom
 * 5 Goes back to the ship
+
+
+## TODO
+
+- [ ] Find a better way to slow down the simulation
+- [ ] Fix body colisions instead of orbiting
+- [ ] Fix paralax background fading and weirdness
+- [ ] Add animations for jets

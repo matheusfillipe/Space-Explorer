@@ -11,7 +11,7 @@ export var color = Color(.5, 1, .5)
 var tracked_path = PoolVector2Array()
 
 const vel_arrow_divider = 100
-const force_arrow_divider = 1000
+const force_arrow_divider = 10000
 
 func _ready():
 	set_linear_velocity(initial_velocity)
