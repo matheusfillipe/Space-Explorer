@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://objects/KBody.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/st1.png" type="Texture" id=2]
+[ext_resource path="res://shaders/color.shader" type="Shader" id=3]
+
+[sub_resource type="ShaderMaterial" id=2]
+resource_local_to_scene = true
+shader = ExtResource( 3 )
+shader_param/active = true
+shader_param/color = Color( 0.886275, 0.00392157, 0.00392157, 1 )
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+shader = ExtResource( 3 )
+shader_param/active = true
+shader_param/color = Color( 0.560784, 0.890196, 1, 1 )
+
+[node name="star1" instance=ExtResource( 1 )]
+color = Color( 0.501961, 1, 0.501961, 1 )
+
+[node name="arrow" parent="Vector" index="0"]
+material = SubResource( 2 )
+
+[node name="Sprite" parent="." index="2"]
+material = SubResource( 1 )
+position = Vector2( 7, 16 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 2 )

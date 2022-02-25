@@ -1,0 +1,33 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://objects/KBody.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/ship.png" type="Texture" id=2]
+[ext_resource path="res://objects/star_shader.shader" type="Shader" id=3]
+[ext_resource path="res://objects/Player.gd" type="Script" id=4]
+[ext_resource path="res://shaders/color.shader" type="Shader" id=5]
+
+[sub_resource type="ShaderMaterial" id=2]
+resource_local_to_scene = true
+shader = ExtResource( 5 )
+shader_param/active = true
+shader_param/color = Color( 0.886275, 0.00392157, 0.00392157, 1 )
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+shader = ExtResource( 3 )
+
+[node name="Player" instance=ExtResource( 1 )]
+show_behind_parent = true
+script = ExtResource( 4 )
+
+[node name="arrow" parent="Vector" index="0"]
+material = SubResource( 2 )
+
+[node name="arrow" parent="Vector2" index="0"]
+material = SubResource( 2 )
+
+[node name="Sprite" parent="." index="3"]
+material = SubResource( 1 )
+position = Vector2( 16, -2 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 2 )
