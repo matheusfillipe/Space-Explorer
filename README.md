@@ -23,6 +23,8 @@ Proof of concept newtonian gravity simulator using godot's physics engine. You c
 * = resets zoom
 * 5 Goes back to the ship
 
+You can also control the camera with mouse dragging and scroll wheel for zooming.
+
 
 ## TODO
 
@@ -30,3 +32,5 @@ Proof of concept newtonian gravity simulator using godot's physics engine. You c
 - [ ] Fix body colisions instead of orbiting
 - [ ] Fix paralax background fading and weirdness
 - [ ] Add animations for jets
+- [x] Control camera with mouse
+- [ ] Add levels!

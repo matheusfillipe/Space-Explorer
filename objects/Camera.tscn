@@ -29,6 +29,9 @@ motion_mirroring = Vector2( 1920, 1080 )
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/Far"]
 material = SubResource( 2 )
 texture = ExtResource( 4 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 1920, 1080 )
 
 [node name="Mid" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2( 0.3, 0.3 )
@@ -37,6 +40,9 @@ motion_mirroring = Vector2( 1920, 1080 )
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/Mid"]
 material = SubResource( 2 )
 texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 1920, 1080 )
 
 [node name="Close" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2( 0.6, 0.6 )
@@ -46,3 +52,6 @@ motion_mirroring = Vector2( 1920, 1080 )
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/Close"]
 material = SubResource( 2 )
 texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 1920, 1080 )
