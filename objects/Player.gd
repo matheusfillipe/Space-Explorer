@@ -42,6 +42,10 @@ func _process(delta):
 			$flame_right.play("flame")
 			$flame_left.visible = false
 
+	else:
+		$flame_left.visible = false
+		$flame_right.visible = false
+
 	# Thrust
 	if input_vector.y:
 		var direction = Vector2(cos(rotation), sin(rotation))
@@ -64,8 +68,6 @@ func _process(delta):
 			$flame_right.visible = true
 			$flame_right.play("flame")
 
-	if not input_vector:
+	else:
 		is_thrusting = false
 		$flame.visible = false
-		$flame_left.visible = false
-		$flame_right.visible = false
