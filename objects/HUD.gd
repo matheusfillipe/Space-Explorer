@@ -12,6 +12,10 @@ var display_path = false
 func _ready():
 	PlayerState.connect("fuel_changed", self, "fuel_changed")
 	PlayerState.connect("no_fuel", self, "no_fuel")
+	PlayerState.connect("timescale_changed", self, "set_timescale")
+
+func set_timescale(value):
+	$VBoxContainer/GridContainer/HSlider.value = value
 
 func fuel_changed(value):
 	$VBoxContainer/HBoxContainer/ProgressBar.value = value

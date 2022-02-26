@@ -1,6 +1,7 @@
 extends Node2D
 
 const KBody = preload("res://objects/KBody.gd")
+const Player = preload("res://objects/Player.gd")
 
 export var simulation_speed: float = 0.0
 
@@ -15,6 +16,7 @@ func _ready():
 			kbodies.append(child)
 			print(child)
 	set_process(true)
+	PlayerState.timescale = simulation_speed
 
 func _draw():
 	for body in kbodies:
@@ -31,9 +33,10 @@ func _physics_process(_delta):
 		get_tree().reload_current_scene()
 
 	for body1 in kbodies:
+		body1.applied_force = Vector2.ZERO
 		for body2 in kbodies:
 			if body1 != body2:
-				body1.applied_force = Utils.get_force(body1, body2)
+				body1.applied_force += Utils.get_force(body1, body2)
 
 	update()
 

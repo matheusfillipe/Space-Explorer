@@ -45,6 +45,7 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 1920, 1080 )
 
 [node name="Close" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
 motion_scale = Vector2( 0.6, 0.6 )
 motion_offset = Vector2( 1920, 0 )
 motion_mirroring = Vector2( 1920, 1080 )

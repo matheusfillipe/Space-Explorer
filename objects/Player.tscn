@@ -1,10 +1,257 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=58 format=2]
 
 [ext_resource path="res://objects/KBody.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/ship.png" type="Texture" id=2]
 [ext_resource path="res://objects/star_shader.shader" type="Shader" id=3]
 [ext_resource path="res://objects/Player.gd" type="Script" id=4]
 [ext_resource path="res://shaders/color.shader" type="Shader" id=5]
+[ext_resource path="res://assets/flame.png" type="Texture" id=6]
+[ext_resource path="res://assets/flamegrow.png" type="Texture" id=7]
+[ext_resource path="res://shaders/glow.shader" type="Shader" id=8]
+
+[sub_resource type="ShaderMaterial" id=49]
+shader = ExtResource( 8 )
+shader_param/hdr_threshold = 0.1
+shader_param/active = true
+shader_param/color = Color( 0.882353, 0.839216, 0.184314, 1 )
+
+[sub_resource type="AtlasTexture" id=34]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=35]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 512, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=36]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 1024, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=37]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 1536, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=38]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 2048, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=39]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 2560, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=40]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 3072, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=41]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 3584, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=42]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 4096, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=43]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 4608, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=44]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 5120, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=45]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 5632, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=46]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 6144, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=47]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 6656, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=48]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 7168, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 512, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 1024, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 1536, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 2048, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=9]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 2560, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=10]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 3072, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=11]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 3584, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=12]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 4096, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=13]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 4608, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=14]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 5120, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=15]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 5632, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=16]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 6144, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=17]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 6656, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=18]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 7168, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=19]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 7680, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=20]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 8192, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=21]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 8704, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=22]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 9216, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=23]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 9728, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=24]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 10240, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=25]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 10752, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=26]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 11264, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=27]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 11776, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=28]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 12288, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=29]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 12800, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=30]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 13312, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=31]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 13824, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=32]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 14336, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=33]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 14848, 0, 512, 512 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ) ],
+"loop": false,
+"name": "grow",
+"speed": 30.0
+}, {
+"frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ) ],
+"loop": true,
+"name": "flame",
+"speed": 30.0
+} ]
 
 [sub_resource type="ShaderMaterial" id=2]
 resource_local_to_scene = true
@@ -19,14 +266,52 @@ shader = ExtResource( 3 )
 [node name="Player" instance=ExtResource( 1 )]
 show_behind_parent = true
 script = ExtResource( 4 )
+display_path = false
+display_velocity = false
+display_force = false
+initial_velocity = Vector2( 0, 0 )
+initial_rotation = 0.0
+color = Color( 0.5, 1, 0.5, 1 )
+
+[node name="flame" type="AnimatedSprite" parent="." index="0"]
+visible = false
+modulate = Color( 2, 1, 1, 1 )
+material = SubResource( 49 )
+position = Vector2( -50, 0 )
+scale = Vector2( 0.25, 0.2 )
+frames = SubResource( 3 )
+animation = "flame"
+frame = 24
+playing = true
+
+[node name="flame_right" type="AnimatedSprite" parent="." index="1"]
+visible = false
+modulate = Color( 1, 1, 3, 1 )
+material = SubResource( 49 )
+position = Vector2( 21, 20 )
+rotation = -2.0944
+scale = Vector2( 0.105713, 0.0488803 )
+frames = SubResource( 3 )
+animation = "flame"
+frame = 5
+playing = true
+
+[node name="flame_left" type="AnimatedSprite" parent="." index="2"]
+visible = false
+modulate = Color( 1, 1, 3, 1 )
+material = SubResource( 49 )
+position = Vector2( 23, -21 )
+rotation = 2.0944
+scale = Vector2( 0.105713, 0.0488803 )
+frames = SubResource( 3 )
+animation = "flame"
+frame = 28
+playing = true
 
 [node name="arrow" parent="Vector" index="0"]
 material = SubResource( 2 )
 
-[node name="arrow" parent="Vector2" index="0"]
-material = SubResource( 2 )
-
-[node name="Sprite" parent="." index="3"]
+[node name="Sprite" parent="." index="5"]
 material = SubResource( 1 )
 position = Vector2( 16, -2 )
 scale = Vector2( 0.1, 0.1 )

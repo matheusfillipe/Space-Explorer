@@ -26,19 +26,12 @@ script = ExtResource( 1 )
 [node name="Vector" type="Node2D" parent="."]
 visible = false
 
-[node name="arrow" type="Sprite" parent="Vector"]
-material = SubResource( 3 )
-position = Vector2( 75, 0 )
-rotation = 3.14159
-scale = Vector2( 0.05, 0.04 )
-texture = ExtResource( 3 )
+[node name="center" type="Node2D" parent="Vector"]
+position = Vector2( 31, 0 )
 
-[node name="Vector2" type="Node2D" parent="."]
-visible = false
-
-[node name="arrow" type="Sprite" parent="Vector2"]
+[node name="arrow" type="Sprite" parent="Vector/center"]
 material = SubResource( 3 )
-position = Vector2( 75, 0 )
+position = Vector2( 44.5, 0 )
 rotation = 3.14159
 scale = Vector2( 0.05, 0.04 )
 texture = ExtResource( 3 )
