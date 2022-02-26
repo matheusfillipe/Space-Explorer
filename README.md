@@ -1,9 +1,9 @@
 # Gravity simulation demo
 
 Proof of concept newtonian gravity simulator using godot's physics engine. You can control a little ship in a 2D simulation.
-![img1](https://user-images.githubusercontent.com/24435787/155674374-ced450c9-13d0-45a7-98cf-1d51231ee382.png)
-![img2](https://user-images.githubusercontent.com/24435787/155674388-53656ad4-1e96-46a6-bfb4-630eabc696d9.png)
-![img3](https://user-images.githubusercontent.com/24435787/155674393-6b748d9a-dabe-42db-976e-f075c693a521.png)
+![image](https://user-images.githubusercontent.com/24435787/155859663-9145b4fb-49c1-41d9-9a1e-4bbebc2ec8ba.png)
+![image](https://user-images.githubusercontent.com/24435787/155859681-13d97b31-9d1f-4b55-a5a5-474d9369fe64.png)
+![image](https://user-images.githubusercontent.com/24435787/155859795-79f86775-3103-4981-804f-ea1106b0a4c9.png)
 
 
 ## Playing
