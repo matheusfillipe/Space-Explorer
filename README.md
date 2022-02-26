@@ -29,6 +29,7 @@ You can use the numbers (not numpad ones) to set the simulation speed.
 
 You can also control the camera with mouse dragging and scroll wheel for zooming.
 
+By hovering on stars you can see their information and if you click you will start tracking them.
 
 ## TODO
 
