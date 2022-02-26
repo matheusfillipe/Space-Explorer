@@ -1,6 +1,15 @@
 extends Node
 
-var G = 1000000
+var G = 50000
+
+func get_children_with_type(node, type):
+	var matches = []
+	for N in node.get_children():
+		if N is type:
+			matches.append(N)
+		if N.get_child_count() > 0:
+			matches += get_children_with_type(N, type)
+	return matches
 
 func body_distance(body1: RigidBody2D, body2: RigidBody2D) -> float:
 	var p1 = body1.global_position

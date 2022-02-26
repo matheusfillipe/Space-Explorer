@@ -13,11 +13,11 @@
 background_mode = 4
 glow_enabled = true
 glow_intensity = 2.69
-glow_strength = 0.55
-glow_bloom = 1.0
+glow_strength = 0.52
+glow_bloom = 0.58
 glow_blend_mode = 1
-glow_hdr_threshold = 0.33
-glow_hdr_luminance_cap = 1.0
+glow_hdr_threshold = 0.66
+glow_hdr_luminance_cap = 5.16
 glow_hdr_scale = 1.25
 
 [node name="World" type="Node2D"]
@@ -34,47 +34,85 @@ smoothing_enabled = false
 [node name="HUD" parent="." instance=ExtResource( 8 )]
 
 [node name="Player" parent="." instance=ExtResource( 7 )]
-position = Vector2( 1142, 753 )
+position = Vector2( 1071, 719 )
 color = Color( 0.905882, 0.141176, 0.0823529, 1 )
 
-[node name="star1" parent="." instance=ExtResource( 2 )]
-position = Vector2( 3284, -931 )
+[node name="Stars" type="Node2D" parent="."]
+
+[node name="star1" parent="Stars" instance=ExtResource( 2 )]
+position = Vector2( 3015, -811 )
 mass = 1000.0
 initial_velocity = Vector2( -500, 0 )
 color = Color( 0.560784, 0.890196, 1, 1 )
 
-[node name="star6" parent="." instance=ExtResource( 2 )]
+[node name="star6" parent="Stars" instance=ExtResource( 2 )]
 position = Vector2( 4939, 346 )
 mass = 1000.0
 initial_velocity = Vector2( -500, 0 )
 color = Color( 0.94902, 0.486275, 0.843137, 1 )
 
-[node name="star2" parent="." instance=ExtResource( 3 )]
+[node name="star10" parent="Stars" instance=ExtResource( 2 )]
+position = Vector2( 7711, -1132 )
+mass = 1000.0
+initial_velocity = Vector2( -500, 0 )
+color = Color( 0.94902, 0.486275, 0.843137, 1 )
+
+[node name="star11" parent="Stars" instance=ExtResource( 2 )]
+position = Vector2( 8753, 1791 )
+mass = 1000.0
+initial_velocity = Vector2( -500, 0 )
+color = Color( 0.94902, 0.486275, 0.843137, 1 )
+
+[node name="star2" parent="Stars" instance=ExtResource( 3 )]
 position = Vector2( 2286, 1345 )
 mass = 1000.0
 initial_velocity = Vector2( -100, -100 )
 color = Color( 0.94902, 0.486275, 0.843137, 1 )
 
-[node name="star7" parent="." instance=ExtResource( 3 )]
+[node name="star12" parent="Stars" instance=ExtResource( 3 )]
+position = Vector2( 10551, 438 )
+mass = 1000.0
+initial_velocity = Vector2( -100, -100 )
+color = Color( 0.94902, 0.486275, 0.843137, 1 )
+
+[node name="star9" parent="Stars" instance=ExtResource( 3 )]
+position = Vector2( -3862, -688 )
+mass = 1000.0
+initial_velocity = Vector2( -100, -100 )
+color = Color( 0.94902, 0.486275, 0.843137, 1 )
+
+[node name="star7" parent="Stars" instance=ExtResource( 3 )]
 position = Vector2( 1685, 2903 )
 mass = 1000.0
 initial_velocity = Vector2( -100, -100 )
 color = Color( 0.501961, 1, 0.501961, 1 )
 
-[node name="star3" parent="." instance=ExtResource( 4 )]
+[node name="star8" parent="Stars" instance=ExtResource( 3 )]
+position = Vector2( 6019, 3121 )
+mass = 1000.0
+initial_velocity = Vector2( -100, -100 )
+color = Color( 0.501961, 1, 0.501961, 1 )
+
+[node name="star3" parent="Stars" instance=ExtResource( 4 )]
 position = Vector2( -853, -521 )
 mass = 1000.0
 initial_velocity = Vector2( 100, 200 )
 color = Color( 1, 0.95, 0.5, 1 )
 
-[node name="star5" parent="." instance=ExtResource( 4 )]
+[node name="star5" parent="Stars" instance=ExtResource( 4 )]
 position = Vector2( 4788, 2031 )
 mass = 1000.0
 initial_velocity = Vector2( 100, 200 )
 color = Color( 0.501961, 1, 0.501961, 1 )
 
-[node name="star4" parent="." instance=ExtResource( 5 )]
-position = Vector2( -1722, 1896 )
+[node name="star13" parent="Stars" instance=ExtResource( 4 )]
+position = Vector2( -5518, 3109 )
+mass = 1000.0
+initial_velocity = Vector2( 100, 200 )
+color = Color( 0.501961, 1, 0.501961, 1 )
+
+[node name="star4" parent="Stars" instance=ExtResource( 5 )]
+position = Vector2( -758, 2681 )
 mass = 1000.0
 initial_velocity = Vector2( 0, 100 )
 initial_rotation = 5.0

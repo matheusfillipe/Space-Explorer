@@ -1,14 +1,15 @@
 extends "res://objects/KBody.gd"
 
-export var fuel_consunption_rate = 100
-export var spin_fuel_consunption_rate = 10
-export var power = 100
-export var break_power = 40
+export var fuel_consunption_rate = 6
+export var spin_fuel_consunption_rate = 2
+export var power = 10
+export var break_power = 4
 
 var has_fuel = true
 var is_thrusting = false
 
 func _ready():
+# warning-ignore:return_value_discarded
 	PlayerState.connect("no_fuel", self, "no_fuel")
 
 func no_fuel():

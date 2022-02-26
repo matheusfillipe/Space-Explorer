@@ -3,18 +3,37 @@ extends Node2D
 const KBody = preload("res://objects/KBody.gd")
 const Player = preload("res://objects/Player.gd")
 
-export var simulation_speed: float = 0.0
+onready var hud = $HUD
 
-const simulation_speed_faker = 0.1
+export var simulation_speed: float = 0.0
+export var timescale_keymap = {
+	KEY_1: .1,
+	KEY_2: .2,
+	KEY_3: .5,
+	KEY_4: .8,
+	KEY_5: 1,
+	KEY_6: 3,
+	KEY_7: 5,
+	KEY_8: 8,
+	KEY_9: 10,
+	KEY_0: 0,
+	KEY_SPACE: 0,
+}
+
+const simulation_speed_faker = 1
 
 var kbodies = []
 
+
+
 func _ready():
 	Engine.time_scale = simulation_speed * simulation_speed_faker
-	for child in get_children():
-		if child is KBody:
-			kbodies.append(child)
-			print(child)
+	for body in Utils.get_children_with_type(self, KBody):
+		# warning-ignore:return_value_discarded
+		body.connect("hovered", hud, "set_hover")
+		kbodies.append(body)
+
+	print(kbodies)
 	set_process(true)
 	PlayerState.timescale = simulation_speed
 
@@ -30,6 +49,7 @@ func _draw():
 func _physics_process(_delta):
 	if Input.is_action_just_pressed("reset"):
 		PlayerState.reset()
+# warning-ignore:return_value_discarded
 		get_tree().reload_current_scene()
 
 	for body1 in kbodies:
@@ -40,6 +60,16 @@ func _physics_process(_delta):
 
 	update()
 
+# keyboard timescale control
+func _unhandled_input(event):
+	if not (event is InputEventKey and event.is_pressed()):
+		return
+	if event.scancode == KEY_SPACE and simulation_speed == 0:
+		simulation_speed = 1
+		PlayerState.timescale = simulation_speed
+	elif event.scancode in timescale_keymap:
+		simulation_speed = timescale_keymap[event.scancode]
+		PlayerState.timescale = simulation_speed
 
 func _on_HUD_time_scale_changed(value):
 	simulation_speed = value

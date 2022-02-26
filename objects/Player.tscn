@@ -7,13 +7,13 @@
 [ext_resource path="res://shaders/color.shader" type="Shader" id=5]
 [ext_resource path="res://assets/flame.png" type="Texture" id=6]
 [ext_resource path="res://assets/flamegrow.png" type="Texture" id=7]
-[ext_resource path="res://shaders/glow.shader" type="Shader" id=8]
+[ext_resource path="res://shaders/bloom.shader" type="Shader" id=8]
 
 [sub_resource type="ShaderMaterial" id=49]
 shader = ExtResource( 8 )
-shader_param/hdr_threshold = 0.1
-shader_param/active = true
-shader_param/color = Color( 0.882353, 0.839216, 0.184314, 1 )
+shader_param/bloomRadius = 1.0
+shader_param/bloomThreshold = 0.8
+shader_param/bloomIntensity = 2.0
 
 [sub_resource type="AtlasTexture" id=34]
 flags = 4
@@ -253,7 +253,7 @@ animations = [ {
 "speed": 30.0
 } ]
 
-[sub_resource type="ShaderMaterial" id=2]
+[sub_resource type="ShaderMaterial" id=50]
 resource_local_to_scene = true
 shader = ExtResource( 5 )
 shader_param/active = true
@@ -266,12 +266,6 @@ shader = ExtResource( 3 )
 [node name="Player" instance=ExtResource( 1 )]
 show_behind_parent = true
 script = ExtResource( 4 )
-display_path = false
-display_velocity = false
-display_force = false
-initial_velocity = Vector2( 0, 0 )
-initial_rotation = 0.0
-color = Color( 0.5, 1, 0.5, 1 )
 
 [node name="flame" type="AnimatedSprite" parent="." index="0"]
 visible = false
@@ -281,7 +275,7 @@ position = Vector2( -50, 0 )
 scale = Vector2( 0.25, 0.2 )
 frames = SubResource( 3 )
 animation = "flame"
-frame = 24
+frame = 25
 playing = true
 
 [node name="flame_right" type="AnimatedSprite" parent="." index="1"]
@@ -293,7 +287,7 @@ rotation = -2.0944
 scale = Vector2( 0.105713, 0.0488803 )
 frames = SubResource( 3 )
 animation = "flame"
-frame = 5
+frame = 1
 playing = true
 
 [node name="flame_left" type="AnimatedSprite" parent="." index="2"]
@@ -305,11 +299,11 @@ rotation = 2.0944
 scale = Vector2( 0.105713, 0.0488803 )
 frames = SubResource( 3 )
 animation = "flame"
-frame = 28
+frame = 24
 playing = true
 
-[node name="arrow" parent="Vector" index="0"]
-material = SubResource( 2 )
+[node name="arrow" parent="Vector/center" index="0"]
+material = SubResource( 50 )
 
 [node name="Sprite" parent="." index="5"]
 material = SubResource( 1 )

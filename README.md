@@ -13,15 +13,19 @@ Proof of concept newtonian gravity simulator using godot's physics engine. You c
 * Left/Right arrow to spin the ship
 * Up/Down to accelerate and decelerate
 * You can control the simulation speed, display vectors paths with the controls on the HUD
+* Spacebar pause
 * backspace resets the level
+
+You can use the numbers (not numpad ones) to set the simulation speed.
 
 #### Camera controls
 
-* Numpad arrows to detach frmo the ship and move the camera around: 2 6 4 8
+* Numpad arrows to detach from the ship and move the camera around: 2 6 4 8
 * '+' to zoom in
 * '-' to zoom out
 * = resets zoom
-* 5 Goes back to the ship
+* 5 Goes back to the tracked object
+* '/' to track back to the player
 
 You can also control the camera with mouse dragging and scroll wheel for zooming.
 
@@ -30,7 +34,8 @@ You can also control the camera with mouse dragging and scroll wheel for zooming
 
 - [ ] Find a better way to slow down the simulation
 - [ ] Fix body colisions instead of orbiting
-- [ ] Fix paralax background fading and weirdness
-- [ ] Add animations for jets
+- [ ] Fix paralax background when zooming out
+- [ ] Add animations for flames
 - [x] Control camera with mouse
+- [ ] Add refuel
 - [ ] Add levels!

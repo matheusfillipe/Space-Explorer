@@ -10,9 +10,13 @@ export var initial_rotation = 0.0
 export var color = Color(.5, 1, .5)
 
 var tracked_path = PoolVector2Array()
+var has_mouse = false
 
 const vel_arrow_divider = 100
-const force_arrow_divider = 100000
+const force_arrow_divider = 10000
+
+signal hovered
+signal unhovered
 
 func _ready():
 	set_linear_velocity(initial_velocity)
@@ -38,3 +42,15 @@ func _process(_delta):
 			return
 		$Vector.global_rotation = vector.angle()
 		$Vector/center.scale = Vector2.ONE * scale
+
+func scale_click_area(value):
+	$ClickArea/CollisionShape2D.scale = Vector2.ONE * value
+
+func _on_ClickArea_mouse_entered():
+	has_mouse = true
+	emit_signal("hovered", self)
+
+
+func _on_ClickArea_mouse_exited():
+	has_mouse = false
+	emit_signal("unhovered", self)

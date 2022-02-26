@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://objects/KBody.gd" type="Script" id=1]
 [ext_resource path="res://shaders/color.shader" type="Shader" id=2]
@@ -17,6 +17,9 @@ resource_local_to_scene = true
 shader = ExtResource( 2 )
 shader_param/active = false
 shader_param/color = Color( 0.470588, 1, 0.627451, 1 )
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 40.0
 
 [node name="KBody" type="RigidBody2D"]
 mass = 10.0
@@ -37,7 +40,18 @@ scale = Vector2( 0.05, 0.04 )
 texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 material = SubResource( 2 )
+
+[node name="ClickArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickArea"]
+shape = SubResource( 4 )
+
+[connection signal="mouse_entered" from="ClickArea" to="." method="_on_ClickArea_mouse_entered"]
+[connection signal="mouse_exited" from="ClickArea" to="." method="_on_ClickArea_mouse_exited"]
