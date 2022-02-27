@@ -41,7 +41,6 @@ func set_tracking(body):
 	tracking_label.text = body.name
 
 func set_hover(body):
-	print("hud hover: ", body)
 	hover_label.add_color_override("font_color", body.color)
 	hover_label.text = body.name + " %5.2fau away" % Utils.body_distance(body, player)
 	body.connect("unhovered", self, "clear_hover")

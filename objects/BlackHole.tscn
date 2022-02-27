@@ -31,17 +31,17 @@ mass = 10000.0
 [node name="BackBufferCopy" type="BackBufferCopy" parent="." index="0"]
 copy_mode = 2
 
+[node name="center" parent="Vector" index="0"]
+position = Vector2( 200, 0 )
+
 [node name="arrow" parent="Vector/center" index="0"]
 material = SubResource( 1 )
 
-[node name="Black" type="Sprite" parent="." index="2"]
-scale = Vector2( 0.2, 0.2 )
-texture = ExtResource( 6 )
-
-[node name="Sprite" parent="." index="4"]
+[node name="Sprite" parent="." index="3"]
 material = SubResource( 4 )
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 3 )
 
-[node name="CollisionShape2D" parent="ClickArea" index="0"]
-visible = true
+[node name="Black" type="Sprite" parent="." index="4"]
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 6 )

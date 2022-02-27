@@ -21,12 +21,12 @@ func _process(delta):
 	input_vector = input_vector.normalized()
 
 	if input_vector:
-		global_position += input_vector * speed * delta
+		global_position += input_vector * speed * max(delta, 0.00166) * zoom
 		attached = false
 
 	if drags.size() > 0:
 		for input in drags:
-			global_position += input * speed * delta
+			global_position += input * speed * max(delta, 0.00166) * zoom
 		drags = PoolVector2Array()
 		attached = false
 
@@ -47,7 +47,6 @@ func _process(delta):
 		for body in current_scene.kbodies:
 			if body.has_mouse:
 				track_object = body
-				print(body)
 				attached = true
 				break
 

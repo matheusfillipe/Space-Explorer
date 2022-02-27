@@ -4,6 +4,7 @@ const KBody = preload("res://objects/KBody.gd")
 const Player = preload("res://objects/Player.gd")
 
 onready var hud = $HUD
+onready var canvas = $DrawCanvas
 
 export var simulation_speed: float = 0.0
 export var timescale_keymap = {
@@ -34,16 +35,17 @@ func _ready():
 		kbodies.append(body)
 
 	print(kbodies)
-	set_process(true)
 	PlayerState.timescale = simulation_speed
+	canvas.kbodies = kbodies
+	# set_process(true)
 
-func _draw():
-	for body in kbodies:
-		if body.display_path: # and body.tracked_path.size() > 1:
-			if body.mark_path():
-				draw_polyline(body.tracked_path, body.color, 1)
-		else:
-			body.clear_path()
+# func _draw():
+# 	for body in kbodies:
+# 		if body.display_path: # and body.tracked_path.size() > 1:
+# 			if body.mark_path():
+# 				canvas._draw_polyline(body.tracked_path, body.color, 1)
+# 		else:
+# 			body.clear_path()
 
 
 func _physics_process(_delta):
@@ -58,7 +60,7 @@ func _physics_process(_delta):
 			if body1 != body2:
 				body1.applied_force += Utils.get_force(body1, body2)
 
-	update()
+	# update()
 
 # keyboard timescale control
 func _unhandled_input(event):

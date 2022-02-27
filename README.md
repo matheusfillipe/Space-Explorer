@@ -24,7 +24,7 @@ You can use the numbers (not numpad ones) to set the simulation speed.
 * '+' to zoom in
 * '-' to zoom out
 * = resets zoom
-* 5 Goes back to the tracked object
+* 0 Goes back to the tracked object
 * '/' to track back to the player
 
 You can also control the camera with mouse dragging and scroll wheel for zooming.

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scenes/World.gd" type="Script" id=1]
 [ext_resource path="res://objects/Stars/star1.tscn" type="PackedScene" id=2]
@@ -9,6 +9,9 @@
 [ext_resource path="res://objects/Player.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=8]
 [ext_resource path="res://objects/BlackHole.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/nebula.jpg" type="Texture" id=10]
+[ext_resource path="res://shaders/edge_dissolve.shader" type="Shader" id=11]
+[ext_resource path="res://scenes/DrawingCanvas.gd" type="Script" id=12]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -21,7 +24,22 @@ glow_hdr_threshold = 0.66
 glow_hdr_luminance_cap = 5.16
 glow_hdr_scale = 1.25
 
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0, 0, 0, 0.373894, 0.495575, 0.688053, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.76, 0.76, 0.76, 1, 0.84, 0.84, 0.84, 1, 0.84, 0.84, 0.84, 1, 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 11 )
+shader_param/dissolve_value = 0.306
+shader_param/cut = false
+shader_param/combined = true
+shader_param/noise_img = SubResource( 4 )
+
 [node name="World" type="Node2D"]
+show_behind_parent = true
 script = ExtResource( 1 )
 simulation_speed = 1.0
 
@@ -37,6 +55,34 @@ smoothing_enabled = false
 [node name="Player" parent="." instance=ExtResource( 7 )]
 position = Vector2( 1071, 719 )
 color = Color( 0.905882, 0.141176, 0.0823529, 1 )
+
+[node name="Places" type="Node2D" parent="."]
+
+[node name="Nebula" type="Sprite" parent="Places"]
+material = SubResource( 2 )
+position = Vector2( -2516, 9575 )
+scale = Vector2( 8, 8 )
+texture = ExtResource( 10 )
+
+[node name="Nebula4" type="Sprite" parent="Places"]
+material = SubResource( 2 )
+position = Vector2( 3943, 10034 )
+scale = Vector2( 8, 8 )
+texture = ExtResource( 10 )
+
+[node name="Nebula2" type="Sprite" parent="Places"]
+material = SubResource( 2 )
+position = Vector2( 4562, 15199 )
+rotation = 3.14159
+scale = Vector2( 8, 8 )
+texture = ExtResource( 10 )
+
+[node name="Nebula3" type="Sprite" parent="Places"]
+material = SubResource( 2 )
+position = Vector2( -2821, 15195 )
+rotation = 3.14159
+scale = Vector2( 8, 8 )
+texture = ExtResource( 10 )
 
 [node name="Stars" type="Node2D" parent="."]
 
@@ -106,6 +152,36 @@ mass = 1000.0
 initial_velocity = Vector2( 100, 200 )
 color = Color( 0.501961, 1, 0.501961, 1 )
 
+[node name="star14" parent="Stars" instance=ExtResource( 2 )]
+position = Vector2( -7708, 8464 )
+mass = 1000.0
+initial_velocity = Vector2( -500, 0 )
+color = Color( 0.94902, 0.486275, 0.843137, 1 )
+
+[node name="star15" parent="Stars" instance=ExtResource( 2 )]
+position = Vector2( -530, 9281 )
+mass = 1000.0
+initial_velocity = Vector2( -500, 0 )
+color = Color( 0.94902, 0.486275, 0.843137, 1 )
+
+[node name="star16" parent="Stars" instance=ExtResource( 3 )]
+position = Vector2( -3037, 15328 )
+mass = 1000.0
+initial_velocity = Vector2( -100, -100 )
+color = Color( 0.94902, 0.486275, 0.843137, 1 )
+
+[node name="star17" parent="Stars" instance=ExtResource( 3 )]
+position = Vector2( -3264, 10611 )
+mass = 1000.0
+initial_velocity = Vector2( -100, -100 )
+color = Color( 0.501961, 1, 0.501961, 1 )
+
+[node name="star18" parent="Stars" instance=ExtResource( 4 )]
+position = Vector2( -5706, 8490 )
+mass = 1000.0
+initial_velocity = Vector2( 100, 200 )
+color = Color( 0.501961, 1, 0.501961, 1 )
+
 [node name="star13" parent="Stars" instance=ExtResource( 4 )]
 position = Vector2( -5518, 3109 )
 mass = 1000.0
@@ -120,7 +196,11 @@ initial_rotation = 5.0
 color = Color( 0.501961, 1, 0.501961, 1 )
 
 [node name="BlackHole" parent="." instance=ExtResource( 9 )]
-position = Vector2( -3603, 4822 )
+position = Vector2( 408, 10208 )
+
+[node name="DrawCanvas" type="Node2D" parent="."]
+show_behind_parent = true
+script = ExtResource( 12 )
 
 [connection signal="time_scale_changed" from="HUD" to="." method="_on_HUD_time_scale_changed"]
 [connection signal="toggle_forces" from="HUD" to="." method="_on_HUD_toggle_forces"]
