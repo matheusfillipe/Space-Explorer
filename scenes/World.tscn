@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/World.gd" type="Script" id=1]
 [ext_resource path="res://objects/Stars/star1.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://objects/Camera.tscn" type="PackedScene" id=6]
 [ext_resource path="res://objects/Player.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=8]
+[ext_resource path="res://objects/BlackHole.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -117,6 +118,9 @@ mass = 1000.0
 initial_velocity = Vector2( 0, 100 )
 initial_rotation = 5.0
 color = Color( 0.501961, 1, 0.501961, 1 )
+
+[node name="BlackHole" parent="." instance=ExtResource( 9 )]
+position = Vector2( -3603, 4822 )
 
 [connection signal="time_scale_changed" from="HUD" to="." method="_on_HUD_time_scale_changed"]
 [connection signal="toggle_forces" from="HUD" to="." method="_on_HUD_toggle_forces"]

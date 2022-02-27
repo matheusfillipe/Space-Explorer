@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://objects/KBody.gd" type="Script" id=1]
 [ext_resource path="res://shaders/color.shader" type="Shader" id=2]
 [ext_resource path="res://assets/arrow.png" type="Texture" id=3]
+[ext_resource path="res://shaders/distort.shader" type="Shader" id=4]
 
 [sub_resource type="ShaderMaterial" id=3]
 resource_local_to_scene = true
@@ -12,11 +13,18 @@ shader_param/color = Color( 0.886275, 0.00392157, 0.00392157, 1 )
 
 [sub_resource type="CircleShape2D" id=1]
 
-[sub_resource type="ShaderMaterial" id=2]
+[sub_resource type="Curve" id=2]
+min_value = -1.0
+_data = [ Vector2( 0.00380379, -0.418531 ), 0.0, 0.0, 0, 0, Vector2( 0.14962, 0.0898563 ), 5.8793, 8.52822, 0, 0, Vector2( 0.213018, 0.760783 ), 0.0, -4.17251, 0, 0, Vector2( 0.354607, -0.852636 ), 0.0, -0.629925, 0, 0, Vector2( 0.500423, -0.00319505 ), 2.49956, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 2 )
+
+[sub_resource type="ShaderMaterial" id=6]
 resource_local_to_scene = true
-shader = ExtResource( 2 )
-shader_param/active = false
-shader_param/color = Color( 0.470588, 1, 0.627451, 1 )
+shader = ExtResource( 4 )
+shader_param/strength = 0.5
+shader_param/curve = SubResource( 5 )
 
 [sub_resource type="CircleShape2D" id=4]
 radius = 40.0
@@ -44,13 +52,14 @@ visible = false
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-material = SubResource( 2 )
+material = SubResource( 6 )
 
 [node name="ClickArea" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClickArea"]
+visible = false
 shape = SubResource( 4 )
 
 [connection signal="mouse_entered" from="ClickArea" to="." method="_on_ClickArea_mouse_entered"]

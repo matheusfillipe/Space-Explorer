@@ -1,0 +1,47 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://objects/KBody.tscn" type="PackedScene" id=1]
+[ext_resource path="res://shaders/distort.shader" type="Shader" id=2]
+[ext_resource path="res://assets/st1.png" type="Texture" id=3]
+[ext_resource path="res://shaders/color.shader" type="Shader" id=5]
+[ext_resource path="res://assets/Black.png" type="Texture" id=6]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+shader = ExtResource( 5 )
+shader_param/active = true
+shader_param/color = Color( 0.886275, 0.00392157, 0.00392157, 1 )
+
+[sub_resource type="Curve" id=2]
+min_value = -1.0
+_data = [ Vector2( 0.00380379, -0.418531 ), 0.0, 0.0, 0, 0, Vector2( 0.14962, 0.0898563 ), 5.8793, 8.52822, 0, 0, Vector2( 0.213018, 0.760783 ), 0.0, -4.17251, 0, 0, Vector2( 0.354607, -0.852636 ), 0.0, -0.629925, 0, 0, Vector2( 0.500423, -0.00319505 ), 2.49956, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 2 )
+
+[sub_resource type="ShaderMaterial" id=4]
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/strength = 0.118
+shader_param/curve = SubResource( 5 )
+
+[node name="BlackHole" instance=ExtResource( 1 )]
+mass = 10000.0
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="." index="0"]
+copy_mode = 2
+
+[node name="arrow" parent="Vector/center" index="0"]
+material = SubResource( 1 )
+
+[node name="Black" type="Sprite" parent="." index="2"]
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 6 )
+
+[node name="Sprite" parent="." index="4"]
+material = SubResource( 4 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" parent="ClickArea" index="0"]
+visible = true

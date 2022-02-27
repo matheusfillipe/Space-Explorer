@@ -6,12 +6,13 @@ export var keyboard_zoom_multiplier = 1.01
 export var scroll_wheel_zoom_multiplier = 1.08
 export var drag_multiplier = 0.1
 
-var attached = true
 onready var current_scene = get_tree().get_current_scene()
 onready var player = current_scene.get_node("Player")
 onready var hud = current_scene.get_node("HUD")
 onready var track_object = player
+
 var drags = PoolVector2Array()
+var attached = true
 
 func _process(delta):
 	var input_vector = Vector2.ZERO
