@@ -1,8 +1,7 @@
 shader_type canvas_item;
 
-uniform float hdr_threshold = 1.0; // Pixels with higher color than 1 will glow
 uniform bool active = true;
-uniform vec4 color : hint_color;
+uniform float hdr_threshold: hint_range(0,1) = 1.0; // Pixels with higher color than 1 will glow
 
 vec4 sample_glow_pixel(sampler2D tex, vec2 uv) {
     return max(texture(tex, uv, 2.0) - hdr_threshold, vec4(0.0));
@@ -23,6 +22,5 @@ void fragment() {
         COLOR = texture(TEXTURE, UV);
 	} else {
         COLOR = vec4(col.rgb + glowing_col.rgb, col.a);
-        // COLOR = col2;
     }
 }

@@ -50,6 +50,11 @@ environment = SubResource( 1 )
 position = Vector2( 487, 385 )
 smoothing_enabled = false
 
+[node name="DrawCanvas" type="Node2D" parent="."]
+modulate = Color( 1.5, 1.5, 1.5, 1 )
+z_index = 10
+script = ExtResource( 12 )
+
 [node name="HUD" parent="." instance=ExtResource( 8 )]
 
 [node name="Player" parent="." instance=ExtResource( 7 )]
@@ -59,12 +64,14 @@ color = Color( 0.905882, 0.141176, 0.0823529, 1 )
 [node name="Places" type="Node2D" parent="."]
 
 [node name="Nebula" type="Sprite" parent="Places"]
+modulate = Color( 1, 1, 1, 0.47451 )
 material = SubResource( 2 )
 position = Vector2( -3381, 10107 )
 scale = Vector2( 8, 8 )
 texture = ExtResource( 10 )
 
 [node name="Nebula4" type="Sprite" parent="Places"]
+modulate = Color( 1, 1, 1, 0.568627 )
 material = SubResource( 2 )
 position = Vector2( 3943, 10034 )
 rotation = 3.14159
@@ -72,6 +79,7 @@ scale = Vector2( 8, 8 )
 texture = ExtResource( 10 )
 
 [node name="Nebula2" type="Sprite" parent="Places"]
+modulate = Color( 1, 1, 1, 0.447059 )
 material = SubResource( 2 )
 position = Vector2( 4455, 12799 )
 rotation = 3.14159
@@ -79,6 +87,7 @@ scale = Vector2( 8, 8 )
 texture = ExtResource( 10 )
 
 [node name="Nebula3" type="Sprite" parent="Places"]
+modulate = Color( 1, 1, 1, 0.756863 )
 material = SubResource( 2 )
 position = Vector2( -3167, 14044 )
 scale = Vector2( 8, 8 )
@@ -197,10 +206,6 @@ color = Color( 0.501961, 1, 0.501961, 1 )
 
 [node name="BlackHole" parent="." instance=ExtResource( 9 )]
 position = Vector2( 408, 10208 )
-
-[node name="DrawCanvas" type="Node2D" parent="."]
-show_behind_parent = true
-script = ExtResource( 12 )
 
 [connection signal="time_scale_changed" from="HUD" to="." method="_on_HUD_time_scale_changed"]
 [connection signal="toggle_forces" from="HUD" to="." method="_on_HUD_toggle_forces"]

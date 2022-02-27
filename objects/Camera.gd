@@ -4,7 +4,7 @@ export(float) var speed = 5000
 
 export var keyboard_zoom_multiplier = 1.01
 export var scroll_wheel_zoom_multiplier = 1.08
-export var drag_multiplier = 0.1
+export var drag_multiplier = 0.05
 
 onready var current_scene = get_tree().get_current_scene()
 onready var player = current_scene.get_node("Player")
