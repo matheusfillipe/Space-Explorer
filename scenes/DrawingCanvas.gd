@@ -7,7 +7,7 @@ func _ready():
 
 func _draw():
 	for body in kbodies:
-		if body.display_path: # and body.tracked_path.size() > 1:
+		if body.display_path:
 			if body.mark_path():
 				draw_polyline(body.tracked_path, body.color, 1)
 		else:

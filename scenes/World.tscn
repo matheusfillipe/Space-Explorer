@@ -60,27 +60,27 @@ color = Color( 0.905882, 0.141176, 0.0823529, 1 )
 
 [node name="Nebula" type="Sprite" parent="Places"]
 material = SubResource( 2 )
-position = Vector2( -2516, 9575 )
+position = Vector2( -3381, 10107 )
 scale = Vector2( 8, 8 )
 texture = ExtResource( 10 )
 
 [node name="Nebula4" type="Sprite" parent="Places"]
 material = SubResource( 2 )
 position = Vector2( 3943, 10034 )
+rotation = 3.14159
 scale = Vector2( 8, 8 )
 texture = ExtResource( 10 )
 
 [node name="Nebula2" type="Sprite" parent="Places"]
 material = SubResource( 2 )
-position = Vector2( 4562, 15199 )
+position = Vector2( 4455, 12799 )
 rotation = 3.14159
 scale = Vector2( 8, 8 )
 texture = ExtResource( 10 )
 
 [node name="Nebula3" type="Sprite" parent="Places"]
 material = SubResource( 2 )
-position = Vector2( -2821, 15195 )
-rotation = 3.14159
+position = Vector2( -3167, 14044 )
 scale = Vector2( 8, 8 )
 texture = ExtResource( 10 )
 

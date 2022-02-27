@@ -25,8 +25,6 @@ const simulation_speed_faker = 1
 
 var kbodies = []
 
-
-
 func _ready():
 	Engine.time_scale = simulation_speed * simulation_speed_faker
 	for body in Utils.get_children_with_type(self, KBody):
@@ -37,15 +35,6 @@ func _ready():
 	print(kbodies)
 	PlayerState.timescale = simulation_speed
 	canvas.kbodies = kbodies
-	# set_process(true)
-
-# func _draw():
-# 	for body in kbodies:
-# 		if body.display_path: # and body.tracked_path.size() > 1:
-# 			if body.mark_path():
-# 				canvas._draw_polyline(body.tracked_path, body.color, 1)
-# 		else:
-# 			body.clear_path()
 
 
 func _physics_process(_delta):
@@ -60,7 +49,6 @@ func _physics_process(_delta):
 			if body1 != body2:
 				body1.applied_force += Utils.get_force(body1, body2)
 
-	# update()
 
 # keyboard timescale control
 func _unhandled_input(event):
