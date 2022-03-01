@@ -13,6 +13,20 @@ onready var track_object = player
 
 var drags = PoolVector2Array()
 var attached = true
+var paralax_layers = []
+
+func _ready():
+	for layer in Utils.get_children_with_type(self, ParallaxLayer):
+		paralax_layers.append([layer, layer.motion_scale])
+
+func update_paralax():
+	"""Change paralax on zooming"""
+	for layer in paralax_layers:
+		layer[0].motion_scale.x = layer[1].x / zoom.x
+		layer[0].motion_scale.y = layer[1].y / zoom.y
+
+	# HACK This is so the paralax doesn't disappear when detached
+	global_position += Vector2(0, -10)
 
 func _process(delta):
 	var input_vector = Vector2.ZERO
@@ -33,18 +47,22 @@ func _process(delta):
 	if Input.is_action_pressed("cam_reset_pos"):
 		attached = true
 		zoom = Vector2.ONE
+		update_paralax()
 
 	if Input.is_action_pressed("cam_reset_zoom"):
 		zoom = Vector2.ONE
+		update_paralax()
 
 	if Input.is_action_pressed("cam_in"):
 		zoom /= keyboard_zoom_multiplier
+		update_paralax()
 
 	if Input.is_action_pressed("cam_out"):
 		zoom *= keyboard_zoom_multiplier
+		update_paralax()
 
 	if Input.is_action_just_pressed("mouse_left_click"):
-		for body in current_scene.kbodies:
+		for body in GlobalSate.kbodies:
 			if body.has_mouse:
 				track_object = body
 				attached = true
@@ -53,11 +71,13 @@ func _process(delta):
 	if Input.is_action_just_pressed("track_player"):
 		track_object = player
 		zoom = Vector2.ONE
+		update_paralax()
 		attached = true
 
 	# Scale click areas
-	for body in current_scene.kbodies:
+	for body in GlobalSate.kbodies:
 		body.scale_click_area(zoom)
+
 
 	if attached:
 		global_position = track_object.global_position
@@ -75,7 +95,9 @@ func _unhandled_input(event):
 			if event.button_index == BUTTON_WHEEL_UP:
 				# global_position = get_global_mouse_position()
 				zoom /= scroll_wheel_zoom_multiplier
+				update_paralax()
 			# zoom out
 			if event.button_index == BUTTON_WHEEL_DOWN:
 				# global_position = get_global_mouse_position()
 				zoom *= scroll_wheel_zoom_multiplier
+				update_paralax()

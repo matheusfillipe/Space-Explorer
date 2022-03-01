@@ -206,7 +206,12 @@ margin_right = 450.0
 margin_bottom = 66.0
 custom_fonts/font = SubResource( 1 )
 
+[node name="DataTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="value_changed" from="HBoxContainer/VBoxContainer/GridContainer/HSlider" to="." method="_on_HSlider_value_changed"]
 [connection signal="toggled" from="HBoxContainer/VBoxContainer/GridContainer/forces" to="." method="_on_forces_toggled"]
 [connection signal="toggled" from="HBoxContainer/VBoxContainer/GridContainer/velocity" to="." method="_on_velocity_toggled"]
 [connection signal="toggled" from="HBoxContainer/VBoxContainer/GridContainer/path" to="." method="_on_path_toggled"]
+[connection signal="timeout" from="DataTimer" to="." method="_on_DataTimer_timeout"]

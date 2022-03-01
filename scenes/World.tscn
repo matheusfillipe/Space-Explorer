@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scenes/World.gd" type="Script" id=1]
 [ext_resource path="res://objects/Stars/star1.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://assets/nebula.jpg" type="Texture" id=10]
 [ext_resource path="res://shaders/edge_dissolve.shader" type="Shader" id=11]
 [ext_resource path="res://scenes/DrawingCanvas.gd" type="Script" id=12]
+[ext_resource path="res://objects/Refuel.tscn" type="PackedScene" id=13]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -41,6 +42,7 @@ shader_param/noise_img = SubResource( 4 )
 [node name="World" type="Node2D"]
 show_behind_parent = true
 script = ExtResource( 1 )
+max_arrow_scale = 200
 simulation_speed = 1.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -58,7 +60,7 @@ script = ExtResource( 12 )
 [node name="HUD" parent="." instance=ExtResource( 8 )]
 
 [node name="Player" parent="." instance=ExtResource( 7 )]
-position = Vector2( 1071, 719 )
+position = Vector2( 1138, 7035 )
 color = Color( 0.905882, 0.141176, 0.0823529, 1 )
 
 [node name="Places" type="Node2D" parent="."]
@@ -73,7 +75,7 @@ texture = ExtResource( 10 )
 [node name="Nebula4" type="Sprite" parent="Places"]
 modulate = Color( 1, 1, 1, 0.568627 )
 material = SubResource( 2 )
-position = Vector2( 3943, 10034 )
+position = Vector2( 4843, 11590 )
 rotation = 3.14159
 scale = Vector2( 8, 8 )
 texture = ExtResource( 10 )
@@ -204,7 +206,51 @@ initial_velocity = Vector2( 0, 100 )
 initial_rotation = 5.0
 color = Color( 0.501961, 1, 0.501961, 1 )
 
-[node name="BlackHole" parent="." instance=ExtResource( 9 )]
+[node name="Refuels" type="Node2D" parent="."]
+
+[node name="Refuel" parent="Refuels" instance=ExtResource( 13 )]
+position = Vector2( 3133, 3391 )
+scale = Vector2( 5, 5 )
+
+[node name="Refuel2" parent="Refuels" instance=ExtResource( 13 )]
+position = Vector2( 1054, 4638 )
+scale = Vector2( 5, 5 )
+
+[node name="Refuel3" parent="Refuels" instance=ExtResource( 13 )]
+position = Vector2( 2634, 5042 )
+scale = Vector2( 5, 5 )
+
+[node name="Refuel10" parent="Refuels" instance=ExtResource( 13 )]
+position = Vector2( 6926, 17942 )
+scale = Vector2( 5, 5 )
+
+[node name="Refuel8" parent="Refuels" instance=ExtResource( 13 )]
+position = Vector2( 75, 6419 )
+scale = Vector2( 5, 5 )
+
+[node name="Refuel4" parent="Refuels" instance=ExtResource( 13 )]
+position = Vector2( 1802, -624 )
+scale = Vector2( 5, 5 )
+
+[node name="Refuel5" parent="Refuels" instance=ExtResource( 13 )]
+position = Vector2( 780, -517 )
+scale = Vector2( 5, 5 )
+
+[node name="Refuel6" parent="Refuels" instance=ExtResource( 13 )]
+position = Vector2( -3620, 5376 )
+scale = Vector2( 5, 5 )
+
+[node name="Refuel7" parent="Refuels" instance=ExtResource( 13 )]
+position = Vector2( 768, 10537 )
+scale = Vector2( 20, 20 )
+
+[node name="Refuel9" parent="Refuels" instance=ExtResource( 13 )]
+position = Vector2( 1123, 12836 )
+scale = Vector2( 20, 20 )
+
+[node name="BlackHoles" type="Node2D" parent="."]
+
+[node name="BlackHole" parent="BlackHoles" instance=ExtResource( 9 )]
 position = Vector2( 408, 10208 )
 
 [connection signal="time_scale_changed" from="HUD" to="." method="_on_HUD_time_scale_changed"]

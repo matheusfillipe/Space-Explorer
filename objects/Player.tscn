@@ -265,6 +265,7 @@ shader = ExtResource( 3 )
 
 [node name="Player" instance=ExtResource( 1 )]
 show_behind_parent = true
+collision_layer = 5
 script = ExtResource( 4 )
 
 [node name="flame" type="AnimatedSprite" parent="." index="0"]
@@ -275,7 +276,7 @@ position = Vector2( -50, 0 )
 scale = Vector2( 0.25, 0.2 )
 frames = SubResource( 3 )
 animation = "flame"
-frame = 17
+frame = 16
 playing = true
 
 [node name="flame_right" type="AnimatedSprite" parent="." index="1"]
@@ -287,7 +288,7 @@ rotation = -2.0944
 scale = Vector2( 0.105713, 0.0488803 )
 frames = SubResource( 3 )
 animation = "flame"
-frame = 23
+frame = 22
 playing = true
 
 [node name="flame_left" type="AnimatedSprite" parent="." index="2"]
@@ -299,7 +300,7 @@ rotation = 2.0944
 scale = Vector2( 0.105713, 0.0488803 )
 frames = SubResource( 3 )
 animation = "flame"
-frame = 16
+frame = 15
 playing = true
 
 [node name="arrow" parent="Vector/center" index="0"]

@@ -19,6 +19,7 @@ config/icon="res://icon.png"
 
 Utils="*res://global/Utils.gd"
 PlayerState="*res://global/PlayerState.gd"
+GlobalSate="*res://global/GlobalSate.gd"
 
 [display]
 
@@ -91,6 +92,7 @@ pointing/emulate_touch_from_mouse=true
 
 2d_physics/layer_1="Colision"
 2d_physics/layer_2="Click"
+2d_physics/layer_3="Player"
 
 [physics]
 

@@ -1,9 +1,12 @@
 extends "res://objects/KBody.gd"
 
-export var fuel_consunption_rate = 6
-export var spin_fuel_consunption_rate = 2
-export var power = 10
+export var fuel_consunption_rate = 3
+export var spin_fuel_consunption_rate = 0.5
+export var power = 12
 export var break_power = 4
+export var refuel_rate = 10
+
+onready var state = PlayerState
 
 var has_fuel = true
 var is_thrusting = false

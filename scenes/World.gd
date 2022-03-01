@@ -6,6 +6,8 @@ const Player = preload("res://objects/Player.gd")
 onready var hud = $HUD
 onready var canvas = $DrawCanvas
 
+export var G = 50000
+export var max_arrow_scale = 1000
 export var simulation_speed: float = 0.0
 export var timescale_keymap = {
 	KEY_1: .1,
@@ -27,14 +29,16 @@ var kbodies = []
 
 func _ready():
 	Engine.time_scale = simulation_speed * simulation_speed_faker
+	Utils.G = G
 	for body in Utils.get_children_with_type(self, KBody):
 		# warning-ignore:return_value_discarded
 		body.connect("hovered", hud, "set_hover")
+		body.max_display_vector_scale = min(body.max_display_vector_scale, max_arrow_scale)
 		kbodies.append(body)
 
 	print(kbodies)
-	PlayerState.timescale = simulation_speed
-	canvas.kbodies = kbodies
+	GlobalSate.kbodies = kbodies
+	GlobalSate.timescale = simulation_speed
 
 
 func _physics_process(_delta):
@@ -43,9 +47,9 @@ func _physics_process(_delta):
 # warning-ignore:return_value_discarded
 		get_tree().reload_current_scene()
 
-	for body1 in kbodies:
+	for body1 in GlobalSate.kbodies:
 		body1.applied_force = Vector2.ZERO
-		for body2 in kbodies:
+		for body2 in GlobalSate.kbodies:
 			if body1 != body2:
 				body1.applied_force += Utils.get_force(body1, body2)
 
@@ -56,10 +60,10 @@ func _unhandled_input(event):
 		return
 	if event.scancode == KEY_SPACE and simulation_speed == 0:
 		simulation_speed = 1
-		PlayerState.timescale = simulation_speed
+		GlobalSate.timescale = simulation_speed
 	elif event.scancode in timescale_keymap:
 		simulation_speed = timescale_keymap[event.scancode]
-		PlayerState.timescale = simulation_speed
+		GlobalSate.timescale = simulation_speed
 
 func _on_HUD_time_scale_changed(value):
 	simulation_speed = value
@@ -67,15 +71,15 @@ func _on_HUD_time_scale_changed(value):
 
 
 func _on_HUD_toggle_forces(active):
-	for body in kbodies:
+	for body in GlobalSate.kbodies:
 		body.display_force = active
 
 
 func _on_HUD_toggle_speeds(active):
-	for body in kbodies:
+	for body in GlobalSate.kbodies:
 		body.display_velocity = active
 
 
 func _on_HUD_toggle_paths(active):
-	for body in kbodies:
+	for body in GlobalSate.kbodies:
 		body.display_path = active
