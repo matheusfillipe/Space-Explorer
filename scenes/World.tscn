@@ -60,10 +60,6 @@ script = ExtResource( 12 )
 
 [node name="HUD" parent="." instance=ExtResource( 8 )]
 
-[node name="Player" parent="." instance=ExtResource( 7 )]
-position = Vector2( -838, 6323 )
-color = Color( 0.905882, 0.141176, 0.0823529, 1 )
-
 [node name="Places" type="Node2D" parent="."]
 
 [node name="Nebula" type="Sprite" parent="Places"]
@@ -95,6 +91,10 @@ material = SubResource( 2 )
 position = Vector2( -3167, 14044 )
 scale = Vector2( 8, 8 )
 texture = ExtResource( 10 )
+
+[node name="Player" parent="." instance=ExtResource( 7 )]
+position = Vector2( -838, 6323 )
+color = Color( 0.905882, 0.141176, 0.0823529, 1 )
 
 [node name="Stars" type="Node2D" parent="."]
 
