@@ -1,11 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://objects/Refuel.gd" type="Script" id=1]
 [ext_resource path="res://assets/White.png" type="Texture" id=2]
 [ext_resource path="res://shaders/fog.shader" type="Shader" id=3]
 
 [sub_resource type="Gradient" id=5]
-offsets = PoolRealArray( 0, 0, 0.0818584, 0.424779, 0.50885, 0.891593, 1 )
+offsets = PoolRealArray( 0, 0, 0.0420354, 0.424779, 0.50885, 0.957965, 1 )
 colors = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 1, 0.210156, 0.210156, 0.210156, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.171875, 0.14452, 0.14452, 1, 0, 0, 0, 1 )
 
 [sub_resource type="GradientTexture" id=6]
@@ -17,6 +17,12 @@ gradient = SubResource( 5 )
 seamless = true
 noise = SubResource( 3 )
 
+[sub_resource type="Curve" id=8]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.1306, 1 ), 0.0, 0.985387, 0, 0, Vector2( 0.303888, 0.474441 ), 0.0, -3.45559, 0, 0, Vector2( 0.415892, 0.282748 ), -0.566933, 1.43983, 0, 0, Vector2( 0.494083, 0 ), -8.18904, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=9]
+curve = SubResource( 8 )
+
 [sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 3 )
 shader_param/hdr_threshold = 0.0
@@ -24,24 +30,25 @@ shader_param/octaves = 10
 shader_param/starting_amplitude = 0.387
 shader_param/starting_frequency = 0.8
 shader_param/shift = 0.0
-shader_param/velocity = Vector2( 0.08, 0.01 )
-shader_param/fog_color = Color( 3, 2, 2, 1 )
+shader_param/velocity = Vector2( 0.08, 0.08 )
+shader_param/fog_color = Color( 2, 2, 2, 1 )
 shader_param/dissolve_value = 0.76
 shader_param/dissolve_cut = false
 shader_param/dissolve_rotate = true
 shader_param/noise = SubResource( 4 )
 shader_param/dissolve_noise_img = SubResource( 6 )
+shader_param/radial_dissolve_curve = SubResource( 9 )
 
 [sub_resource type="CircleShape2D" id=7]
-radius = 74.0
+radius = 70.0
 
 [node name="Refuel" type="Area2D"]
 collision_layer = 0
 collision_mask = 4
 script = ExtResource( 1 )
 
-[node name="Black" type="Sprite" parent="."]
-modulate = Color( 3, 3, 2, 1 )
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 3, 3, 1.8, 1 )
 material = SubResource( 2 )
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 2 )

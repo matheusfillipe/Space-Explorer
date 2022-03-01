@@ -42,6 +42,7 @@ shader_param/noise_img = SubResource( 4 )
 [node name="World" type="Node2D"]
 show_behind_parent = true
 script = ExtResource( 1 )
+G = 30000
 max_arrow_scale = 200
 simulation_speed = 1.0
 
@@ -60,7 +61,7 @@ script = ExtResource( 12 )
 [node name="HUD" parent="." instance=ExtResource( 8 )]
 
 [node name="Player" parent="." instance=ExtResource( 7 )]
-position = Vector2( 1138, 7035 )
+position = Vector2( -838, 6323 )
 color = Color( 0.905882, 0.141176, 0.0823529, 1 )
 
 [node name="Places" type="Node2D" parent="."]
@@ -209,19 +210,19 @@ color = Color( 0.501961, 1, 0.501961, 1 )
 [node name="Refuels" type="Node2D" parent="."]
 
 [node name="Refuel" parent="Refuels" instance=ExtResource( 13 )]
-position = Vector2( 3133, 3391 )
+position = Vector2( 5862, 4127 )
 scale = Vector2( 5, 5 )
 
 [node name="Refuel2" parent="Refuels" instance=ExtResource( 13 )]
-position = Vector2( 1054, 4638 )
+position = Vector2( 2136, 6121 )
 scale = Vector2( 5, 5 )
 
 [node name="Refuel3" parent="Refuels" instance=ExtResource( 13 )]
-position = Vector2( 2634, 5042 )
+position = Vector2( 3757, 5132 )
 scale = Vector2( 5, 5 )
 
 [node name="Refuel10" parent="Refuels" instance=ExtResource( 13 )]
-position = Vector2( 6926, 17942 )
+position = Vector2( -6377, 4619 )
 scale = Vector2( 5, 5 )
 
 [node name="Refuel8" parent="Refuels" instance=ExtResource( 13 )]
@@ -229,29 +230,43 @@ position = Vector2( 75, 6419 )
 scale = Vector2( 5, 5 )
 
 [node name="Refuel4" parent="Refuels" instance=ExtResource( 13 )]
-position = Vector2( 1802, -624 )
+position = Vector2( 9817, 7043 )
+scale = Vector2( 5, 5 )
+
+[node name="Refuel11" parent="Refuels" instance=ExtResource( 13 )]
+position = Vector2( 8961, 9192 )
+scale = Vector2( 5, 5 )
+
+[node name="Refuel12" parent="Refuels" instance=ExtResource( 13 )]
+position = Vector2( 8037, 11090 )
+scale = Vector2( 5, 5 )
+
+[node name="Refuel13" parent="Refuels" instance=ExtResource( 13 )]
+position = Vector2( 6424, 11846 )
 scale = Vector2( 5, 5 )
 
 [node name="Refuel5" parent="Refuels" instance=ExtResource( 13 )]
-position = Vector2( 780, -517 )
+position = Vector2( 9800, 4870 )
 scale = Vector2( 5, 5 )
 
 [node name="Refuel6" parent="Refuels" instance=ExtResource( 13 )]
-position = Vector2( -3620, 5376 )
+position = Vector2( 8372, 3845 )
 scale = Vector2( 5, 5 )
 
 [node name="Refuel7" parent="Refuels" instance=ExtResource( 13 )]
 position = Vector2( 768, 10537 )
 scale = Vector2( 20, 20 )
+capacity = 50.0
 
 [node name="Refuel9" parent="Refuels" instance=ExtResource( 13 )]
 position = Vector2( 1123, 12836 )
 scale = Vector2( 20, 20 )
+capacity = 50.0
 
 [node name="BlackHoles" type="Node2D" parent="."]
 
 [node name="BlackHole" parent="BlackHoles" instance=ExtResource( 9 )]
-position = Vector2( 408, 10208 )
+position = Vector2( -6189, 15870 )
 
 [connection signal="time_scale_changed" from="HUD" to="." method="_on_HUD_time_scale_changed"]
 [connection signal="toggle_forces" from="HUD" to="." method="_on_HUD_toggle_forces"]

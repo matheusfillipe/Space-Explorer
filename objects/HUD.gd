@@ -31,13 +31,20 @@ func _ready():
 # warning-ignore:return_value_discarded
 	PlayerState.connect("no_fuel", self, "no_fuel")
 # warning-ignore:return_value_discarded
-	GlobalSate.connect("timescale_changed", self, "set_timescale")
+	GlobalState.connect("timescale_changed", self, "set_timescale")
+# warning-ignore:return_value_discarded
+	PlayerState.connect("fuel_full", self, "fuel_full")
+	fuel_full()
 
 func set_timescale(value):
 	time_slider.value = value
 
 func fuel_changed(value):
 	progress_bar.value = value
+	progress_bar.modulate = Color(1, 1, 1, 1)
+
+func fuel_full():
+	progress_bar.modulate = Color(0, 2, 0, 1)
 
 func no_fuel():
 	progress_bar.modulate = Color(1, 0, 0, 1)

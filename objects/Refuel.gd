@@ -1,10 +1,18 @@
 extends Area2D
-export var capacity = 20
+
+export var capacity = 20.0
+export var consume_color_highlight = Color(3, 4, 6)
 
 var refueling_bodies = []
-var consumed = 0
+var consumed = 0.0
 
-onready var orig_modulate = modulate
+onready var sprite = $Sprite
+onready var orig_modulate = sprite.modulate
+
+func _ready():
+	var random_velocity = GlobalState.randv2() * 0.1
+	sprite.material.set_shader_param("velocity", random_velocity)
+	print(random_velocity)
 
 func _process(delta):
 	if consumed > capacity:
@@ -19,12 +27,10 @@ func _process(delta):
 		consumed += body.refuel_rate * delta
 		fueling = true
 	if fueling:
-		modulate.b = max(max(orig_modulate.r, orig_modulate.g), orig_modulate.b)
-		modulate.r = 1
-		modulate.g = 1
+		sprite.modulate = consume_color_highlight
 	else:
-		modulate = orig_modulate
-	modulate.a = clamp((capacity - consumed) / capacity, 0, 1)
+		sprite.modulate = orig_modulate
+	sprite.modulate.a = clamp((capacity - consumed) / capacity, 0, 1)
 
 func _on_Refuel_body_entered(body):
 	refueling_bodies.append(body)

@@ -30,6 +30,10 @@ uniform float dissolve_value : hint_range(0,1);
 uniform bool dissolve_cut = true;
 uniform bool dissolve_rotate = false;
 
+
+
+uniform sampler2D radial_dissolve_curve;
+
 float rand(vec2 uv) {
 	float amplitude = starting_amplitude;
 	float frequency = starting_frequency;
@@ -75,7 +79,6 @@ vec4 dissolve(vec4 main_texture, vec2 uv) {
 
 
 void fragment() {
-
     // fog
 	vec2 motion = vec2(rand(UV + TIME * starting_frequency * velocity));
 	vec4 fog = mix(vec4(0.0), fog_color, rand(UV + motion));
@@ -90,5 +93,9 @@ void fragment() {
 
     vec4 glowing_col = 0.25 * (col0 + col1 + col2 + col3);
     vec4 col = fog;
-    COLOR = dissolve(vec4(col.rgb + glowing_col.rgb, col.a), UV);
+
+	vec2 vecToCenter = vec2(0.5, 0.5) - UV;
+	float distToCenter = length(vecToCenter);
+	float curveVal = texture(radial_dissolve_curve, vec2(distToCenter)).r;
+    COLOR = dissolve(vec4(col.rgb + glowing_col.rgb, fog.a * curveVal), UV);
 }

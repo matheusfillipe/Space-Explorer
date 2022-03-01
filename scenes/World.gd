@@ -37,8 +37,8 @@ func _ready():
 		kbodies.append(body)
 
 	print(kbodies)
-	GlobalSate.kbodies = kbodies
-	GlobalSate.timescale = simulation_speed
+	GlobalState.kbodies = kbodies
+	GlobalState.timescale = simulation_speed
 
 
 func _physics_process(_delta):
@@ -47,9 +47,9 @@ func _physics_process(_delta):
 # warning-ignore:return_value_discarded
 		get_tree().reload_current_scene()
 
-	for body1 in GlobalSate.kbodies:
+	for body1 in GlobalState.kbodies:
 		body1.applied_force = Vector2.ZERO
-		for body2 in GlobalSate.kbodies:
+		for body2 in GlobalState.kbodies:
 			if body1 != body2:
 				body1.applied_force += Utils.get_force(body1, body2)
 
@@ -60,10 +60,10 @@ func _unhandled_input(event):
 		return
 	if event.scancode == KEY_SPACE and simulation_speed == 0:
 		simulation_speed = 1
-		GlobalSate.timescale = simulation_speed
+		GlobalState.timescale = simulation_speed
 	elif event.scancode in timescale_keymap:
 		simulation_speed = timescale_keymap[event.scancode]
-		GlobalSate.timescale = simulation_speed
+		GlobalState.timescale = simulation_speed
 
 func _on_HUD_time_scale_changed(value):
 	simulation_speed = value
@@ -71,15 +71,15 @@ func _on_HUD_time_scale_changed(value):
 
 
 func _on_HUD_toggle_forces(active):
-	for body in GlobalSate.kbodies:
+	for body in GlobalState.kbodies:
 		body.display_force = active
 
 
 func _on_HUD_toggle_speeds(active):
-	for body in GlobalSate.kbodies:
+	for body in GlobalState.kbodies:
 		body.display_velocity = active
 
 
 func _on_HUD_toggle_paths(active):
-	for body in GlobalSate.kbodies:
+	for body in GlobalState.kbodies:
 		body.display_path = active
