@@ -2,11 +2,24 @@ extends Node
 
 var kbodies = [] setget set_kbodies
 var timescale: float = 0.0 setget set_timescale
+var rng = RandomNumberGenerator.new()
 
 signal kbody_added
 signal kbody_removed
 signal kbodies_changed
 signal timescale_changed
+
+func _ready():
+	rng.randomize()
+
+func randfloat(start, end):
+	return rng.randf_range(start, end)
+
+func randint(start, end):
+	return rng.randi_range(start, end)
+
+func randv2():
+	return Vector2(randfloat(0, 1), randfloat(0, 1)).normalized()
 
 func set_timescale(value):
 	timescale = max(0, value)

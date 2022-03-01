@@ -4,7 +4,7 @@ func _ready():
 	set_process(true)
 
 func _draw():
-	for body in GlobalSate.kbodies:
+	for body in GlobalState.kbodies:
 		if body.display_path:
 			if body.mark_path():
 				draw_polyline(body.tracked_path, body.color, 1)

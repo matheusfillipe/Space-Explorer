@@ -62,7 +62,7 @@ func _process(delta):
 		update_paralax()
 
 	if Input.is_action_just_pressed("mouse_left_click"):
-		for body in GlobalSate.kbodies:
+		for body in GlobalState.kbodies:
 			if body.has_mouse:
 				track_object = body
 				attached = true
@@ -75,7 +75,7 @@ func _process(delta):
 		attached = true
 
 	# Scale click areas
-	for body in GlobalSate.kbodies:
+	for body in GlobalState.kbodies:
 		body.scale_click_area(zoom)
 
 
