@@ -4,7 +4,7 @@ extends "res://objects/Body.gd"
 export var display_path = false
 export var display_velocity = false
 export var max_display_vector_scale = 5000
-export var display_force = false
+export var display_gravity = false
 export var initial_velocity = Vector2.ZERO
 export var initial_rotation = 0.0
 export var color = Color(.5, 1, .5)
@@ -12,8 +12,8 @@ export var color = Color(.5, 1, .5)
 var tracked_path = PoolVector2Array()
 var has_mouse = false
 
-const vel_arrow_divider = 100
-const force_arrow_divider = 10000
+const velocity_arrow_divider = 100
+const gravity_arrow_divider = 10
 
 signal hovered
 signal unhovered
@@ -32,11 +32,11 @@ func clear_path():
 	tracked_path = PoolVector2Array()
 
 func _process(_delta):
-	$Vector.visible = display_velocity or display_force
+	$Vector.visible = display_velocity or display_gravity
 
 	if $Vector.visible:
-		var vector = get_linear_velocity() if display_velocity else applied_force
-		var scale = vector.length() / (vel_arrow_divider if display_velocity else force_arrow_divider)
+		var vector = get_linear_velocity() if display_velocity else applied_force/mass
+		var scale = vector.length() / (velocity_arrow_divider if display_velocity else gravity_arrow_divider)
 		if scale > max_display_vector_scale:
 			$Vector.visible = false
 			return

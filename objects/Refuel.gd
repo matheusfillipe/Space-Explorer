@@ -10,8 +10,10 @@ onready var sprite = $Sprite
 onready var orig_modulate = sprite.modulate
 
 func _ready():
+	randomize()
 	var random_velocity = GlobalState.randv2() * 0.1
 	sprite.material.set_shader_param("velocity", random_velocity)
+	sprite.material.get_shader_param("noise").noise.seed = randi()
 
 func _process(delta):
 	if consumed > capacity:

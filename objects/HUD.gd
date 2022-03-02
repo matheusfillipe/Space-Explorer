@@ -3,11 +3,11 @@ extends CanvasLayer
 export var data_update_time = 0.5
 
 signal time_scale_changed
-signal toggle_forces
+signal toggle_gravity
 signal toggle_speeds
 signal toggle_paths
 
-var display_force = false
+var display_gravity = false
 var display_velocity = false
 var display_path = false
 var tracking_body = null
@@ -20,7 +20,7 @@ onready var progress_bar = $HBoxContainer/VBoxContainer/HBoxContainer/ProgressBa
 onready var time_slider = $HBoxContainer/VBoxContainer/GridContainer/HSlider
 onready var time_label = $HBoxContainer/VBoxContainer/GridContainer/time
 onready var speeds_label = $HBoxContainer/VBoxContainer/GridContainer/velocity
-onready var forces_label = $HBoxContainer/VBoxContainer/GridContainer/forces
+onready var gravity_label = $HBoxContainer/VBoxContainer/GridContainer/gravity
 onready var tracking_label = $HBoxContainer/VBoxContainer2/HBoxContainer/Tracking
 onready var hover_label = $HBoxContainer/VBoxContainer2/hover
 onready var data_timer = $DataTimer
@@ -73,21 +73,21 @@ func _on_HSlider_value_changed(value):
 	time_label.text = str(value)
 
 
-func _on_forces_toggled(button_pressed):
+func _on_gravity_toggled(button_pressed):
 	if button_pressed and display_velocity:
 		emit_signal("toggle_speeds", false)
 		speeds_label.set_pressed_no_signal(false)
-	emit_signal("toggle_forces", button_pressed)
-	display_force = button_pressed
+	emit_signal("toggle_gravity", button_pressed)
+	display_gravity = button_pressed
 	display_velocity = false
 
 
 func _on_velocity_toggled(button_pressed):
-	if button_pressed and display_force:
-		emit_signal("toggle_forces", false)
-		forces_label.set_pressed_no_signal(false)
+	if button_pressed and display_gravity:
+		emit_signal("toggle_gravity", false)
+		gravity_label.set_pressed_no_signal(false)
 	emit_signal("toggle_speeds", button_pressed)
-	display_force = false
+	display_gravity = false
 	display_velocity = button_pressed
 
 

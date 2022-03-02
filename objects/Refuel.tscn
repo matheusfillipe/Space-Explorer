@@ -12,23 +12,29 @@ colors = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 1, 0.210156, 0.210156, 0.210156, 1
 gradient = SubResource( 5 )
 
 [sub_resource type="OpenSimplexNoise" id=3]
+seed = 4
+octaves = 1
+period = 38.3
+persistence = 0.822
+lacunarity = 0.88
 
 [sub_resource type="NoiseTexture" id=4]
 seamless = true
 noise = SubResource( 3 )
 
 [sub_resource type="Curve" id=8]
-_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.1306, 1 ), 0.0, 0.985387, 0, 0, Vector2( 0.303888, 0.474441 ), 0.0, -3.45559, 0, 0, Vector2( 0.415892, 0.282748 ), -0.566933, 1.43983, 0, 0, Vector2( 0.494083, 0 ), -8.18904, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.145393, 0.901956 ), -1.6344, -3.0645, 0, 0, Vector2( 0.265849, 0.494608 ), -4.28298, -0.227684, 0, 0, Vector2( 0.403212, 0.339857 ), 1.11415, -6.41417, 0, 0, Vector2( 0.47929, 0.154952 ), -3.51524, 0.0, 0, 0, Vector2( 0.525782, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="CurveTexture" id=9]
 curve = SubResource( 8 )
 
 [sub_resource type="ShaderMaterial" id=2]
+resource_local_to_scene = true
 shader = ExtResource( 3 )
 shader_param/hdr_threshold = 0.0
 shader_param/octaves = 10
 shader_param/starting_amplitude = 0.387
-shader_param/starting_frequency = 0.8
+shader_param/starting_frequency = 0.5
 shader_param/shift = 0.0
 shader_param/velocity = Vector2( 0.08, 0.08 )
 shader_param/fog_color = Color( 2, 2, 2, 1 )

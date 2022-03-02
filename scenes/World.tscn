@@ -46,6 +46,8 @@ G = 30000
 max_arrow_scale = 200
 simulation_speed = 1.0
 
+[node name="HUD" parent="." instance=ExtResource( 8 )]
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 1 )
 
@@ -54,11 +56,9 @@ position = Vector2( 487, 385 )
 smoothing_enabled = false
 
 [node name="DrawCanvas" type="Node2D" parent="."]
-modulate = Color( 1.5, 1.5, 1.5, 1 )
+modulate = Color( 1.1, 1.1, 1.1, 1 )
 z_index = 10
 script = ExtResource( 12 )
-
-[node name="HUD" parent="." instance=ExtResource( 8 )]
 
 [node name="Places" type="Node2D" parent="."]
 
@@ -222,7 +222,7 @@ position = Vector2( 3757, 5132 )
 scale = Vector2( 5, 5 )
 
 [node name="Refuel10" parent="Refuels" instance=ExtResource( 13 )]
-position = Vector2( -6377, 4619 )
+position = Vector2( 3707, 11754 )
 scale = Vector2( 5, 5 )
 
 [node name="Refuel8" parent="Refuels" instance=ExtResource( 13 )]
@@ -269,6 +269,7 @@ capacity = 50.0
 position = Vector2( -6189, 15870 )
 
 [connection signal="time_scale_changed" from="HUD" to="." method="_on_HUD_time_scale_changed"]
-[connection signal="toggle_forces" from="HUD" to="." method="_on_HUD_toggle_forces"]
+[connection signal="toggle_gravity" from="HUD" to="." method="_on_HUD_toggle_gravity"]
 [connection signal="toggle_paths" from="HUD" to="." method="_on_HUD_toggle_paths"]
 [connection signal="toggle_speeds" from="HUD" to="." method="_on_HUD_toggle_speeds"]
+[connection signal="visibility_changed" from="DrawCanvas" to="DrawCanvas" method="_on_DrawCanvas_visibility_changed"]

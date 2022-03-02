@@ -19,6 +19,10 @@ func _ready():
 	for layer in Utils.get_children_with_type(self, ParallaxLayer):
 		paralax_layers.append([layer, layer.motion_scale])
 
+func scale_click_areas():
+	for body in GlobalState.kbodies:
+		body.scale_click_area(zoom)
+
 func update_paralax():
 	"""Change paralax on zooming"""
 	for layer in paralax_layers:
@@ -48,18 +52,22 @@ func _process(delta):
 		attached = true
 		zoom = Vector2.ONE
 		update_paralax()
+		scale_click_areas()
 
 	if Input.is_action_pressed("cam_reset_zoom"):
 		zoom = Vector2.ONE
 		update_paralax()
+		scale_click_areas()
 
 	if Input.is_action_pressed("cam_in"):
 		zoom /= keyboard_zoom_multiplier
 		update_paralax()
+		scale_click_areas()
 
 	if Input.is_action_pressed("cam_out"):
 		zoom *= keyboard_zoom_multiplier
 		update_paralax()
+		scale_click_areas()
 
 	if Input.is_action_just_pressed("mouse_left_click"):
 		for body in GlobalState.kbodies:
@@ -73,11 +81,6 @@ func _process(delta):
 		zoom = Vector2.ONE
 		update_paralax()
 		attached = true
-
-	# Scale click areas
-	for body in GlobalState.kbodies:
-		body.scale_click_area(zoom)
-
 
 	if attached:
 		global_position = track_object.global_position
@@ -96,8 +99,10 @@ func _unhandled_input(event):
 				# global_position = get_global_mouse_position()
 				zoom /= scroll_wheel_zoom_multiplier
 				update_paralax()
+				scale_click_areas()
 			# zoom out
 			if event.button_index == BUTTON_WHEEL_DOWN:
 				# global_position = get_global_mouse_position()
 				zoom *= scroll_wheel_zoom_multiplier
 				update_paralax()
+				scale_click_areas()

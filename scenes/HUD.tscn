@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/SpaceMono-Regular.ttf" type="DynamicFontData" id=3]
 
 [sub_resource type="InputEventAction" id=4]
-action = "toggle_force"
+action = "toggle_g"
 
 [sub_resource type="ShortCut" id=3]
 shortcut = SubResource( 4 )
@@ -86,19 +86,19 @@ __meta__ = {
 }
 
 [node name="label" type="Label" parent="HBoxContainer/VBoxContainer/GridContainer"]
-margin_right = 83.0
+margin_right = 87.0
 margin_bottom = 31.0
 text = "Time:"
 
 [node name="nothing2" type="Control" parent="HBoxContainer/VBoxContainer/GridContainer"]
-margin_left = 87.0
-margin_right = 87.0
+margin_left = 91.0
+margin_right = 91.0
 grow_horizontal = 0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
 [node name="HSlider" type="HSlider" parent="HBoxContainer/VBoxContainer/GridContainer"]
-margin_left = 167.0
+margin_left = 171.0
 margin_right = 600.0
 margin_bottom = 31.0
 focus_mode = 0
@@ -110,14 +110,14 @@ step = 0.01
 
 [node name="label2" type="Label" parent="HBoxContainer/VBoxContainer/GridContainer"]
 margin_top = 39.0
-margin_right = 83.0
+margin_right = 87.0
 margin_bottom = 70.0
-text = "Forces"
+text = "Gravity"
 
-[node name="forces" type="CheckButton" parent="HBoxContainer/VBoxContainer/GridContainer"]
-margin_left = 87.0
+[node name="gravity" type="CheckButton" parent="HBoxContainer/VBoxContainer/GridContainer"]
+margin_left = 91.0
 margin_top = 35.0
-margin_right = 163.0
+margin_right = 167.0
 margin_bottom = 75.0
 focus_mode = 0
 size_flags_horizontal = 0
@@ -128,7 +128,7 @@ __meta__ = {
 }
 
 [node name="time" type="Label" parent="HBoxContainer/VBoxContainer/GridContainer"]
-margin_left = 167.0
+margin_left = 171.0
 margin_top = 39.0
 margin_right = 600.0
 margin_bottom = 70.0
@@ -138,7 +138,7 @@ align = 1
 
 [node name="label3" type="Label" parent="HBoxContainer/VBoxContainer/GridContainer"]
 margin_top = 83.0
-margin_right = 83.0
+margin_right = 87.0
 margin_bottom = 114.0
 text = "Speeds"
 __meta__ = {
@@ -146,9 +146,9 @@ __meta__ = {
 }
 
 [node name="velocity" type="CheckButton" parent="HBoxContainer/VBoxContainer/GridContainer"]
-margin_left = 87.0
+margin_left = 91.0
 margin_top = 79.0
-margin_right = 163.0
+margin_right = 167.0
 margin_bottom = 119.0
 focus_mode = 0
 size_flags_horizontal = 0
@@ -159,14 +159,14 @@ __meta__ = {
 }
 
 [node name="nothing3" type="Control" parent="HBoxContainer/VBoxContainer/GridContainer"]
-margin_left = 167.0
+margin_left = 171.0
 margin_top = 79.0
 margin_right = 600.0
 margin_bottom = 119.0
 
 [node name="label4" type="Label" parent="HBoxContainer/VBoxContainer/GridContainer"]
 margin_top = 127.0
-margin_right = 83.0
+margin_right = 87.0
 margin_bottom = 158.0
 text = "Paths"
 __meta__ = {
@@ -174,9 +174,9 @@ __meta__ = {
 }
 
 [node name="path" type="CheckButton" parent="HBoxContainer/VBoxContainer/GridContainer"]
-margin_left = 87.0
+margin_left = 91.0
 margin_top = 123.0
-margin_right = 163.0
+margin_right = 167.0
 margin_bottom = 163.0
 focus_mode = 0
 size_flags_horizontal = 0
@@ -232,7 +232,7 @@ wait_time = 0.5
 one_shot = true
 
 [connection signal="value_changed" from="HBoxContainer/VBoxContainer/GridContainer/HSlider" to="." method="_on_HSlider_value_changed"]
-[connection signal="toggled" from="HBoxContainer/VBoxContainer/GridContainer/forces" to="." method="_on_forces_toggled"]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer/GridContainer/gravity" to="." method="_on_gravity_toggled"]
 [connection signal="toggled" from="HBoxContainer/VBoxContainer/GridContainer/velocity" to="." method="_on_velocity_toggled"]
 [connection signal="toggled" from="HBoxContainer/VBoxContainer/GridContainer/path" to="." method="_on_path_toggled"]
 [connection signal="timeout" from="DataTimer" to="." method="_on_DataTimer_timeout"]

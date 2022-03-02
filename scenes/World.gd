@@ -28,6 +28,8 @@ const simulation_speed_faker = 1
 var kbodies = []
 
 func _ready():
+	OS.low_processor_usage_mode = true
+
 	Engine.time_scale = simulation_speed * simulation_speed_faker
 	Utils.G = G
 	for body in Utils.get_children_with_type(self, KBody):
@@ -39,6 +41,7 @@ func _ready():
 	print(kbodies)
 	GlobalState.kbodies = kbodies
 	GlobalState.timescale = simulation_speed
+	canvas.visible = false
 
 
 func _physics_process(_delta):
@@ -70,9 +73,9 @@ func _on_HUD_time_scale_changed(value):
 	Engine.time_scale = simulation_speed * simulation_speed_faker
 
 
-func _on_HUD_toggle_forces(active):
+func _on_HUD_toggle_gravity(active):
 	for body in GlobalState.kbodies:
-		body.display_force = active
+		body.display_gravity = active
 
 
 func _on_HUD_toggle_speeds(active):
@@ -83,3 +86,4 @@ func _on_HUD_toggle_speeds(active):
 func _on_HUD_toggle_paths(active):
 	for body in GlobalState.kbodies:
 		body.display_path = active
+	canvas.visible = active

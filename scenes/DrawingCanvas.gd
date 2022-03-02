@@ -13,4 +13,11 @@ func _draw():
 
 
 func _process(_delta):
-	update()
+	if visible:
+		update()
+
+
+func _on_DrawCanvas_visibility_changed():
+	if not visible:
+		for body in GlobalState.kbodies:
+			body.clear_path()
