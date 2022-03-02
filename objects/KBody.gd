@@ -8,10 +8,14 @@ export var display_gravity = false
 export var initial_velocity = Vector2.ZERO
 export var initial_rotation = 0.0
 export var color = Color(.5, 1, .5)
+export var can_supernova = true
 
 var tracked_path = PoolVector2Array()
 var has_mouse = false
+var died = false
 
+const Explosion = preload("res://effects/Explosion.tscn")
+const Refuel = preload("res://objects/Refuel.tscn")
 const velocity_arrow_divider = 100
 const gravity_arrow_divider = 10
 
@@ -54,3 +58,26 @@ func _on_ClickArea_mouse_entered():
 func _on_ClickArea_mouse_exited():
 	has_mouse = false
 	emit_signal("unhovered", self)
+
+func _on_KBody_body_entered(body:Node):
+	print("collision: ", body)
+	if "can_supernova" in body and "died" in body:
+		visible = false
+		if body.mass >= mass and not body.died:
+			died = true
+			queue_free()
+			return
+		var explosion = Explosion.instance()
+		explosion.scale = scale
+		explosion.global_position = global_position
+		get_parent().add_child(explosion)
+		explosion.connect("ended", self, "_on_Explosion_ended")
+
+func _on_Explosion_ended():
+	var refuel = Refuel.instance()
+	refuel.global_position = global_position
+	refuel.scale = mass / 200
+	refuel.capacity = mass / 50
+	get_parent().get_node("Refuels").add_child(refuel)
+	died = true
+	queue_free()

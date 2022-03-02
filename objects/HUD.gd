@@ -3,7 +3,7 @@ extends CanvasLayer
 export var data_update_time = 0.5
 
 signal time_scale_changed
-signal toggle_gravity
+signal toggle_
 signal toggle_speeds
 signal toggle_paths
 
@@ -53,14 +53,15 @@ func set_tracking(body):
 	tracking_label.text = body.name
 
 func update_data(body):
-	hover_label.add_color_override("font_color", body.color)
 	hover_label.text = body.name + " %8dau away" % Utils.body_distance(body, player)
-	data_timer.start(data_update_time)
-	tracking_body = body
-	is_tracking = true
+	hover_label.text += "\nMass: " + str(body.mass)
+	hover_label.add_color_override("font_color", body.color)
 
 func set_hover(body):
 	update_data(body)
+	data_timer.start(data_update_time)
+	tracking_body = body
+	is_tracking = true
 	body.connect("unhovered", self, "clear_hover")
 
 func clear_hover(body):
@@ -77,14 +78,14 @@ func _on_gravity_toggled(button_pressed):
 	if button_pressed and display_velocity:
 		emit_signal("toggle_speeds", false)
 		speeds_label.set_pressed_no_signal(false)
-	emit_signal("toggle_gravity", button_pressed)
+	emit_signal("toggle_forces", button_pressed)
 	display_gravity = button_pressed
 	display_velocity = false
 
 
 func _on_velocity_toggled(button_pressed):
 	if button_pressed and display_gravity:
-		emit_signal("toggle_gravity", false)
+		emit_signal("toggle_forces", false)
 		gravity_label.set_pressed_no_signal(false)
 	emit_signal("toggle_speeds", button_pressed)
 	display_gravity = false
@@ -98,5 +99,5 @@ func _on_path_toggled(button_pressed):
 func _on_DataTimer_timeout():
 	if not is_tracking:
 		return
-	hover_label.text = tracking_body.name + " %8dau away" % Utils.body_distance(tracking_body, player)
+	update_data(tracking_body)
 	data_timer.start(data_update_time)
