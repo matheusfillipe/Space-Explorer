@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://objects/HUD.gd" type="Script" id=1]
+[ext_resource path="res://scenes/HUD.gd" type="Script" id=1]
 [ext_resource path="res://scenes/HUD.tres" type="Theme" id=2]
 [ext_resource path="res://assets/SpaceMono-Regular.ttf" type="DynamicFontData" id=3]
 

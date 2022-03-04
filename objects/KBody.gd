@@ -14,10 +14,16 @@ var tracked_path = PoolVector2Array()
 var has_mouse = false
 var died = false
 
-const Explosion = preload("res://effects/Explosion.tscn")
+const Explosion = preload("res://effects/ExplosionRefuel.tscn")
 const Refuel = preload("res://objects/Refuel.tscn")
 const velocity_arrow_divider = 100
 const gravity_arrow_divider = 10
+
+export(PackedScene) var death_effect = Explosion
+
+onready var current_scene = get_tree().get_current_scene()
+onready var refuels = current_scene.get_node("Refuels")
+onready var collision_pos = global_position
 
 signal hovered
 signal unhovered
@@ -59,25 +65,37 @@ func _on_ClickArea_mouse_exited():
 	has_mouse = false
 	emit_signal("unhovered", self)
 
-func _on_KBody_body_entered(body:Node):
-	print("collision: ", body)
+func _on_CollisionDecection_body_entered(body):
+	if body == self:
+		return
+
 	if "can_supernova" in body and "died" in body:
 		visible = false
+		sleeping = true
 		if body.mass >= mass and not body.died:
 			died = true
+			GlobalState.del_kbody(self)
 			queue_free()
 			return
-		var explosion = Explosion.instance()
-		explosion.scale = scale
-		explosion.global_position = global_position
-		get_parent().add_child(explosion)
-		explosion.connect("ended", self, "_on_Explosion_ended")
 
-func _on_Explosion_ended():
-	var refuel = Refuel.instance()
-	refuel.global_position = global_position
-	refuel.scale = mass / 200
-	refuel.capacity = mass / 50
-	get_parent().get_node("Refuels").add_child(refuel)
-	died = true
-	queue_free()
+		var explosion = death_effect.instance()
+		get_parent().add_child(explosion)
+		explosion.global_position = global_position
+		explosion.scale = scale * 1.5
+		explosion.timer.wait_time = 3
+		explosion.spawn_parent = refuels
+		explosion.spawn_props = {"scale": Vector2.ONE * mass / 200, "capacity": mass / 50}
+		died = true
+		GlobalState.del_kbody(self)
+		queue_free()
+
+
+# func _on_Explosion_ended():
+# 	var refuel = Refuel.instance()
+# 	refuel.global_position = collision_pos
+# 	refuel.scale = Vector2.ONE * mass / 200
+# 	refuel.capacity = mass / 50
+# 	refuels.add_child(refuel)
+# 	died = true
+# 	GlobalState.del_kbody(self)
+# 	queue_free()

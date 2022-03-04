@@ -27,6 +27,7 @@ shader_param/curve = SubResource( 5 )
 
 [node name="BlackHole" instance=ExtResource( 1 )]
 mass = 10000.0
+can_supernova = false
 
 [node name="BackBufferCopy" type="BackBufferCopy" parent="." index="0"]
 copy_mode = 2

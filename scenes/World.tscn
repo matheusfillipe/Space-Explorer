@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://scenes/World.gd" type="Script" id=1]
 [ext_resource path="res://objects/Stars/star1.tscn" type="PackedScene" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://shaders/edge_dissolve.shader" type="Shader" id=11]
 [ext_resource path="res://scenes/DrawingCanvas.gd" type="Script" id=12]
 [ext_resource path="res://objects/Refuel.tscn" type="PackedScene" id=13]
+[ext_resource path="res://effects/Explosion.tscn" type="PackedScene" id=14]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -94,153 +95,116 @@ texture = ExtResource( 10 )
 
 [node name="Player" parent="." instance=ExtResource( 7 )]
 position = Vector2( -838, 6323 )
-contacts_reported = 0
-contact_monitor = false
 color = Color( 0.905882, 0.141176, 0.0823529, 1 )
+death_effect = ExtResource( 14 )
 
 [node name="Stars" type="Node2D" parent="."]
 
 [node name="star1" parent="Stars" instance=ExtResource( 2 )]
 position = Vector2( 3015, -811 )
 mass = 1000.0
-contacts_reported = 0
-contact_monitor = false
 initial_velocity = Vector2( -500, 0 )
 color = Color( 0.560784, 0.890196, 1, 1 )
 
 [node name="star6" parent="Stars" instance=ExtResource( 2 )]
 position = Vector2( 4939, 346 )
 mass = 1000.0
-contacts_reported = 0
-contact_monitor = false
 initial_velocity = Vector2( -500, 0 )
 color = Color( 0.94902, 0.486275, 0.843137, 1 )
 
 [node name="star10" parent="Stars" instance=ExtResource( 2 )]
 position = Vector2( 7711, -1132 )
 mass = 1000.0
-contacts_reported = 0
-contact_monitor = false
 initial_velocity = Vector2( -500, 0 )
 color = Color( 0.94902, 0.486275, 0.843137, 1 )
 
 [node name="star11" parent="Stars" instance=ExtResource( 2 )]
 position = Vector2( 8753, 1791 )
 mass = 1000.0
-contacts_reported = 0
-contact_monitor = false
 initial_velocity = Vector2( -500, 0 )
 color = Color( 0.94902, 0.486275, 0.843137, 1 )
 
 [node name="star2" parent="Stars" instance=ExtResource( 3 )]
 position = Vector2( 2286, 1345 )
 mass = 1000.0
-contacts_reported = 0
-contact_monitor = false
 initial_velocity = Vector2( -100, -100 )
 color = Color( 0.94902, 0.486275, 0.843137, 1 )
 
 [node name="star12" parent="Stars" instance=ExtResource( 3 )]
 position = Vector2( 10551, 438 )
 mass = 1000.0
-contacts_reported = 0
-contact_monitor = false
 initial_velocity = Vector2( -100, -100 )
 color = Color( 0.94902, 0.486275, 0.843137, 1 )
 
 [node name="star9" parent="Stars" instance=ExtResource( 3 )]
 position = Vector2( -3862, -688 )
 mass = 1000.0
-contacts_reported = 0
-contact_monitor = false
 initial_velocity = Vector2( -100, -100 )
 color = Color( 0.94902, 0.486275, 0.843137, 1 )
 
 [node name="star7" parent="Stars" instance=ExtResource( 3 )]
 position = Vector2( 1685, 2903 )
 mass = 1000.0
-contacts_reported = 0
-contact_monitor = false
 initial_velocity = Vector2( -100, -100 )
 color = Color( 0.501961, 1, 0.501961, 1 )
 
 [node name="star8" parent="Stars" instance=ExtResource( 3 )]
 position = Vector2( 6019, 3121 )
 mass = 1000.0
-contacts_reported = 0
-contact_monitor = false
 initial_velocity = Vector2( -100, -100 )
 color = Color( 0.501961, 1, 0.501961, 1 )
 
 [node name="star3" parent="Stars" instance=ExtResource( 4 )]
 position = Vector2( -853, -521 )
 mass = 1000.0
-contacts_reported = 0
-contact_monitor = false
 initial_velocity = Vector2( 100, 200 )
 color = Color( 1, 0.95, 0.5, 1 )
 
 [node name="star5" parent="Stars" instance=ExtResource( 4 )]
 position = Vector2( 4788, 2031 )
 mass = 1000.0
-contacts_reported = 0
-contact_monitor = false
 initial_velocity = Vector2( 100, 200 )
 color = Color( 0.501961, 1, 0.501961, 1 )
 
 [node name="star14" parent="Stars" instance=ExtResource( 2 )]
 position = Vector2( -7708, 8464 )
 mass = 1000.0
-contacts_reported = 0
-contact_monitor = false
 initial_velocity = Vector2( -500, 0 )
 color = Color( 0.94902, 0.486275, 0.843137, 1 )
 
 [node name="star15" parent="Stars" instance=ExtResource( 2 )]
 position = Vector2( -530, 9281 )
 mass = 1000.0
-contacts_reported = 0
-contact_monitor = false
 initial_velocity = Vector2( -500, 0 )
 color = Color( 0.94902, 0.486275, 0.843137, 1 )
 
 [node name="star16" parent="Stars" instance=ExtResource( 3 )]
 position = Vector2( -3037, 15328 )
 mass = 1000.0
-contacts_reported = 0
-contact_monitor = false
 initial_velocity = Vector2( -100, -100 )
 color = Color( 0.94902, 0.486275, 0.843137, 1 )
 
 [node name="star17" parent="Stars" instance=ExtResource( 3 )]
 position = Vector2( -3264, 10611 )
 mass = 1000.0
-contacts_reported = 0
-contact_monitor = false
 initial_velocity = Vector2( -100, -100 )
 color = Color( 0.501961, 1, 0.501961, 1 )
 
 [node name="star18" parent="Stars" instance=ExtResource( 4 )]
 position = Vector2( -5706, 8490 )
 mass = 1000.0
-contacts_reported = 0
-contact_monitor = false
 initial_velocity = Vector2( 100, 200 )
 color = Color( 0.501961, 1, 0.501961, 1 )
 
 [node name="star13" parent="Stars" instance=ExtResource( 4 )]
 position = Vector2( -5518, 3109 )
 mass = 1000.0
-contacts_reported = 0
-contact_monitor = false
 initial_velocity = Vector2( 100, 200 )
 color = Color( 0.501961, 1, 0.501961, 1 )
 
 [node name="star4" parent="Stars" instance=ExtResource( 5 )]
 position = Vector2( -758, 2681 )
 mass = 1000.0
-contacts_reported = 0
-contact_monitor = false
 initial_velocity = Vector2( 0, 100 )
 initial_rotation = 5.0
 color = Color( 0.501961, 1, 0.501961, 1 )
@@ -305,10 +269,28 @@ capacity = 50.0
 
 [node name="BlackHole" parent="BlackHoles" instance=ExtResource( 9 )]
 position = Vector2( -6189, 15870 )
-contacts_reported = 0
-contact_monitor = false
 
 [connection signal="time_scale_changed" from="HUD" to="." method="_on_HUD_time_scale_changed"]
 [connection signal="toggle_paths" from="HUD" to="." method="_on_HUD_toggle_paths"]
 [connection signal="toggle_speeds" from="HUD" to="." method="_on_HUD_toggle_speeds"]
 [connection signal="visibility_changed" from="DrawCanvas" to="DrawCanvas" method="_on_DrawCanvas_visibility_changed"]
+[connection signal="body_entered" from="Player" to="Player" method="_on_KBody_body_entered"]
+[connection signal="body_entered" from="Stars/star1" to="Stars/star1" method="_on_KBody_body_entered"]
+[connection signal="body_entered" from="Stars/star6" to="Stars/star6" method="_on_KBody_body_entered"]
+[connection signal="body_entered" from="Stars/star10" to="Stars/star10" method="_on_KBody_body_entered"]
+[connection signal="body_entered" from="Stars/star11" to="Stars/star11" method="_on_KBody_body_entered"]
+[connection signal="body_entered" from="Stars/star2" to="Stars/star2" method="_on_KBody_body_entered"]
+[connection signal="body_entered" from="Stars/star12" to="Stars/star12" method="_on_KBody_body_entered"]
+[connection signal="body_entered" from="Stars/star9" to="Stars/star9" method="_on_KBody_body_entered"]
+[connection signal="body_entered" from="Stars/star7" to="Stars/star7" method="_on_KBody_body_entered"]
+[connection signal="body_entered" from="Stars/star8" to="Stars/star8" method="_on_KBody_body_entered"]
+[connection signal="body_entered" from="Stars/star3" to="Stars/star3" method="_on_KBody_body_entered"]
+[connection signal="body_entered" from="Stars/star5" to="Stars/star5" method="_on_KBody_body_entered"]
+[connection signal="body_entered" from="Stars/star14" to="Stars/star14" method="_on_KBody_body_entered"]
+[connection signal="body_entered" from="Stars/star15" to="Stars/star15" method="_on_KBody_body_entered"]
+[connection signal="body_entered" from="Stars/star16" to="Stars/star16" method="_on_KBody_body_entered"]
+[connection signal="body_entered" from="Stars/star17" to="Stars/star17" method="_on_KBody_body_entered"]
+[connection signal="body_entered" from="Stars/star18" to="Stars/star18" method="_on_KBody_body_entered"]
+[connection signal="body_entered" from="Stars/star13" to="Stars/star13" method="_on_KBody_body_entered"]
+[connection signal="body_entered" from="Stars/star4" to="Stars/star4" method="_on_KBody_body_entered"]
+[connection signal="body_entered" from="BlackHoles/BlackHole" to="BlackHoles/BlackHole" method="_on_KBody_body_entered"]
