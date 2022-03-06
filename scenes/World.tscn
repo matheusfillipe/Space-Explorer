@@ -118,6 +118,30 @@ mass = 1000.0
 initial_velocity = Vector2( -500, 0 )
 color = Color( 0.94902, 0.486275, 0.843137, 1 )
 
+[node name="star19" parent="Stars" instance=ExtResource( 2 )]
+position = Vector2( -4949, 655 )
+mass = 1000.0
+initial_velocity = Vector2( -500, 0 )
+color = Color( 0.94902, 0.486275, 0.843137, 1 )
+
+[node name="star20" parent="Stars" instance=ExtResource( 2 )]
+position = Vector2( -3590, 932 )
+mass = 1000.0
+initial_velocity = Vector2( -500, 0 )
+color = Color( 0.94902, 0.486275, 0.843137, 1 )
+
+[node name="star21" parent="Stars" instance=ExtResource( 2 )]
+position = Vector2( -6912, 2039 )
+mass = 1000.0
+initial_velocity = Vector2( -500, 0 )
+color = Color( 0.94902, 0.486275, 0.843137, 1 )
+
+[node name="star22" parent="Stars" instance=ExtResource( 2 )]
+position = Vector2( -4898, 1938 )
+mass = 1000.0
+initial_velocity = Vector2( -500, 0 )
+color = Color( 0.94902, 0.486275, 0.843137, 1 )
+
 [node name="star11" parent="Stars" instance=ExtResource( 2 )]
 position = Vector2( 8753, 1791 )
 mass = 1000.0
@@ -278,6 +302,10 @@ position = Vector2( -6189, 15870 )
 [connection signal="body_entered" from="Stars/star1" to="Stars/star1" method="_on_KBody_body_entered"]
 [connection signal="body_entered" from="Stars/star6" to="Stars/star6" method="_on_KBody_body_entered"]
 [connection signal="body_entered" from="Stars/star10" to="Stars/star10" method="_on_KBody_body_entered"]
+[connection signal="body_entered" from="Stars/star19" to="Stars/star19" method="_on_KBody_body_entered"]
+[connection signal="body_entered" from="Stars/star20" to="Stars/star20" method="_on_KBody_body_entered"]
+[connection signal="body_entered" from="Stars/star21" to="Stars/star21" method="_on_KBody_body_entered"]
+[connection signal="body_entered" from="Stars/star22" to="Stars/star22" method="_on_KBody_body_entered"]
 [connection signal="body_entered" from="Stars/star11" to="Stars/star11" method="_on_KBody_body_entered"]
 [connection signal="body_entered" from="Stars/star2" to="Stars/star2" method="_on_KBody_body_entered"]
 [connection signal="body_entered" from="Stars/star12" to="Stars/star12" method="_on_KBody_body_entered"]

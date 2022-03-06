@@ -81,21 +81,10 @@ func _on_CollisionDecection_body_entered(body):
 		var explosion = death_effect.instance()
 		get_parent().add_child(explosion)
 		explosion.global_position = global_position
-		explosion.scale = scale * 1.5
+		explosion.scale = scale * 1.5 * (log(mass/1000) + 1)
 		explosion.timer.wait_time = 3
 		explosion.spawn_parent = refuels
 		explosion.spawn_props = {"scale": Vector2.ONE * mass / 200, "capacity": mass / 50}
 		died = true
 		GlobalState.del_kbody(self)
 		queue_free()
-
-
-# func _on_Explosion_ended():
-# 	var refuel = Refuel.instance()
-# 	refuel.global_position = collision_pos
-# 	refuel.scale = Vector2.ONE * mass / 200
-# 	refuel.capacity = mass / 50
-# 	refuels.add_child(refuel)
-# 	died = true
-# 	GlobalState.del_kbody(self)
-# 	queue_free()
