@@ -103,6 +103,9 @@ tracks/0/keys = {
 [node name="Wave" type="Node2D"]
 script = ExtResource( 4 )
 
+[node name="BackBufferCopy" type="BackBufferCopy" parent="."]
+copy_mode = 2
+
 [node name="Explosion" type="Node2D" parent="."]
 script = ExtResource( 1 )
 spawn = null

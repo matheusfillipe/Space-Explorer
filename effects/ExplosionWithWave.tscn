@@ -47,8 +47,8 @@ shader_param/radial_dissolve_curve = SubResource( 9 )
 
 [node name="ExplosionRefuel" instance=ExtResource( 1 )]
 
-[node name="Sprite" parent="." index="0"]
-material = SubResource( 10 )
-
-[node name="Wave" parent="." index="3" instance=ExtResource( 2 )]
+[node name="Wave" parent="." index="0" instance=ExtResource( 2 )]
 lifetime = 5.0
+
+[node name="Sprite" parent="." index="1"]
+material = SubResource( 10 )
