@@ -25,6 +25,10 @@ GlobalState="*res://global/GlobalState.gd"
 
 window/size/height=768
 
+[global]
+
+drag=false
+
 [input]
 
 cam_up={

@@ -14,7 +14,7 @@ var tracked_path = PoolVector2Array()
 var has_mouse = false
 var died = false
 
-const Explosion = preload("res://effects/ExplosionRefuel.tscn")
+const Explosion = preload("res://effects/ExplosionWithWave.tscn")
 const Refuel = preload("res://objects/Refuel.tscn")
 const velocity_arrow_divider = 100
 const gravity_arrow_divider = 10
@@ -81,7 +81,7 @@ func _on_CollisionDecection_body_entered(body):
 		var explosion = death_effect.instance()
 		get_parent().add_child(explosion)
 		explosion.global_position = global_position
-		explosion.scale = scale * 1.5 * (log(mass/1000) + 1)
+		explosion.scale = scale * (log(mass/1000) + 1)
 		explosion.timer.wait_time = 3
 		explosion.spawn_parent = refuels
 		explosion.spawn_props = {"scale": Vector2.ONE * mass / 200, "capacity": mass / 50}

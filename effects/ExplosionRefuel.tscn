@@ -13,9 +13,9 @@ gradient = SubResource( 5 )
 [sub_resource type="OpenSimplexNoise" id=3]
 seed = 3
 octaves = 1
-period = 48.7
-persistence = 0.495
-lacunarity = 3.32
+period = 52.0
+persistence = 0.401
+lacunarity = 1.67
 
 [sub_resource type="NoiseTexture" id=4]
 seamless = true
@@ -35,8 +35,8 @@ shader_param/octaves = 5
 shader_param/starting_amplitude = 0.5
 shader_param/starting_frequency = 1.0
 shader_param/shift = 0.0
-shader_param/velocity = Vector2( 0.1, 0.1 )
-shader_param/fog_color = Color( 1, 2, 2, 1 )
+shader_param/velocity = Vector2( 0, 0.1 )
+shader_param/fog_color = Color( 3, 2, 1, 1 )
 shader_param/dissolve_value = 1.0
 shader_param/dissolve_cut = false
 shader_param/dissolve_rotate = true
@@ -49,6 +49,7 @@ must_spawn = true
 
 [node name="Sprite" parent="." index="0"]
 material = SubResource( 10 )
+position = Vector2( -1, 0 )
 
 [node name="Timer" parent="." index="2"]
 wait_time = 3.0

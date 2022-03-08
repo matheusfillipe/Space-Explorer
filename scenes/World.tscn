@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://scenes/World.gd" type="Script" id=1]
 [ext_resource path="res://objects/Stars/star1.tscn" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://scenes/DrawingCanvas.gd" type="Script" id=12]
 [ext_resource path="res://objects/Refuel.tscn" type="PackedScene" id=13]
 [ext_resource path="res://effects/Explosion.tscn" type="PackedScene" id=14]
+[ext_resource path="res://effects/ShockWave.tscn" type="PackedScene" id=15]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -293,6 +294,10 @@ capacity = 50.0
 
 [node name="BlackHole" parent="BlackHoles" instance=ExtResource( 9 )]
 position = Vector2( -6189, 15870 )
+
+[node name="Wave" parent="." instance=ExtResource( 15 )]
+position = Vector2( -565, 5707 )
+lifetime = 10.0
 
 [connection signal="time_scale_changed" from="HUD" to="." method="_on_HUD_time_scale_changed"]
 [connection signal="toggle_paths" from="HUD" to="." method="_on_HUD_toggle_paths"]
