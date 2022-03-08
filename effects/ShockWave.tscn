@@ -1,0 +1,131 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://effects/Effect.gd" type="Script" id=1]
+[ext_resource path="res://shaders/shockwave.shader" type="Shader" id=2]
+[ext_resource path="res://assets/White.png" type="Texture" id=3]
+[ext_resource path="res://effects/Wave.gd" type="Script" id=4]
+
+[sub_resource type="ShaderMaterial" id=10]
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/show_mask = false
+shader_param/global = false
+shader_param/center = Vector2( 0.5, 0.5 )
+shader_param/force = 0.042
+shader_param/size = 0.0
+shader_param/thickness = 0.001
+shader_param/chroma_offset = 0.006
+
+[sub_resource type="Animation" id=12]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:material:shader_param/size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:material:shader_param/thickness")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.001 ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "explode"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:material:shader_param/size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 10 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.499 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:material:shader_param/thickness")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 10 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.001, 0.009 ]
+}
+
+[sub_resource type="Animation" id=13]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Explosion/Sprite:material:shader_param/force")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.042 ]
+}
+
+[sub_resource type="Animation" id=14]
+tracks/0/type = "value"
+tracks/0/path = NodePath("Explosion/Sprite:material:shader_param/force")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.01, 0.0 ]
+}
+
+[node name="Wave" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="Explosion" type="Node2D" parent="."]
+script = ExtResource( 1 )
+spawn = null
+
+[node name="Sprite" type="Sprite" parent="Explosion"]
+material = SubResource( 10 )
+scale = Vector2( 50, 50 )
+texture = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Explosion"]
+autoplay = "explode"
+anims/RESET = SubResource( 12 )
+anims/explode = SubResource( 11 )
+
+[node name="Timer" type="Timer" parent="Explosion"]
+
+[node name="FadePlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 13 )
+anims/fade = SubResource( 14 )
+
+[node name="FadeTimer" type="Timer" parent="."]
+
+[connection signal="animation_finished" from="Explosion/AnimationPlayer" to="Explosion" method="_on_AnimationPlayer_animation_finished"]
+[connection signal="timeout" from="Explosion/Timer" to="Explosion" method="_on_Timer_timeout"]
+[connection signal="animation_finished" from="FadePlayer" to="." method="_on_FadePlayer_animation_finished"]
+[connection signal="timeout" from="FadeTimer" to="." method="_on_FadeTimer_timeout"]
