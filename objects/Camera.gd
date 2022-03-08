@@ -83,6 +83,9 @@ func _process(delta):
 		attached = true
 
 	if attached:
+		if not is_instance_valid(track_object):
+			attached = false
+			return
 		global_position = track_object.global_position
 		hud.set_tracking(track_object)
 

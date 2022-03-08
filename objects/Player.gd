@@ -32,7 +32,7 @@ func _process(delta):
 
 	# Spin
 	if input_vector.x:
-		apply_torque_impulse(power * input_vector.x)
+		apply_torque_impulse(power * input_vector.x * power)
 		PlayerState.consume(delta, spin_fuel_consunption_rate)
 
 		# Spin left

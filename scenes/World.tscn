@@ -14,7 +14,7 @@
 [ext_resource path="res://scenes/DrawingCanvas.gd" type="Script" id=12]
 [ext_resource path="res://objects/Refuel.tscn" type="PackedScene" id=13]
 [ext_resource path="res://effects/Explosion.tscn" type="PackedScene" id=14]
-[ext_resource path="res://effects/ShockWave.tscn" type="PackedScene" id=15]
+[ext_resource path="res://effects/WaveEmitter.tscn" type="PackedScene" id=15]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -295,9 +295,18 @@ capacity = 50.0
 [node name="BlackHole" parent="BlackHoles" instance=ExtResource( 9 )]
 position = Vector2( -6189, 15870 )
 
-[node name="Wave" parent="." instance=ExtResource( 15 )]
-position = Vector2( -565, 5707 )
+[node name="WaveEmitter" parent="BlackHoles/BlackHole" instance=ExtResource( 15 )]
+lifetime = 0.0
+
+[node name="Waves" type="Node2D" parent="."]
+visible = false
+
+[node name="WaveEmitter2" parent="Waves" instance=ExtResource( 15 )]
+position = Vector2( 498, 4877 )
 lifetime = 10.0
+spawn_props = {
+"lifetime": 10.0
+}
 
 [connection signal="time_scale_changed" from="HUD" to="." method="_on_HUD_time_scale_changed"]
 [connection signal="toggle_paths" from="HUD" to="." method="_on_HUD_toggle_paths"]

@@ -98,6 +98,6 @@ func _on_path_toggled(button_pressed):
 func _on_DataTimer_timeout():
 	if not is_tracking:
 		return
-	if tracking_body:
+	if tracking_body and is_instance_valid(tracking_body):
 		update_data(tracking_body)
 		data_timer.start(data_update_time)
