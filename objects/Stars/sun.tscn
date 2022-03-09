@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/White.png" type="Texture" id=1]
+[ext_resource path="res://shaders/sun.shader" type="Shader" id=2]
+[ext_resource path="res://objects/sun.gd" type="Script" id=3]
+
+[sub_resource type="OpenSimplexNoise" id=2]
+octaves = 4
+period = 40.0
+persistence = 0.2
+lacunarity = 3.51
+
+[sub_resource type="NoiseTexture" id=3]
+seamless = true
+noise = SubResource( 2 )
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 2 )
+shader_param/aspect_ratio = 3.222
+shader_param/velocity = Vector2( 0.1, 0.01 )
+shader_param/radius = 0.261
+shader_param/starting_frequency = 0.961
+shader_param/starting_amplitude = 0.624
+shader_param/octaves = 3
+shader_param/main_color = Color( 2, 1.74375, 0, 1 )
+shader_param/second_color = Color( 2, 0.62, 0, 1 )
+shader_param/third_color = Color( 0, 0, 0, 1 )
+shader_param/noise = SubResource( 3 )
+
+[node name="Sun" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="White" type="Sprite" parent="."]
+modulate = Color( 1.1, 1.1, 1.2, 1 )
+material = SubResource( 1 )
+texture = ExtResource( 1 )
