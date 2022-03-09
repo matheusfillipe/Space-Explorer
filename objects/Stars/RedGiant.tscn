@@ -1,0 +1,95 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://objects/KBody.tscn" type="PackedScene" id=1]
+[ext_resource path="res://objects/Stars/sun.tscn" type="PackedScene" id=2]
+[ext_resource path="res://shaders/distort.shader" type="Shader" id=3]
+[ext_resource path="res://shaders/color.shader" type="Shader" id=4]
+[ext_resource path="res://shaders/sun.shader" type="Shader" id=5]
+
+[sub_resource type="OpenSimplexNoise" id=8]
+resource_local_to_scene = true
+octaves = 5
+period = 31.3
+persistence = 0.295
+lacunarity = 2.77
+
+[sub_resource type="NoiseTexture" id=3]
+resource_local_to_scene = true
+seamless = true
+noise = SubResource( 8 )
+
+[sub_resource type="ShaderMaterial" id=9]
+resource_local_to_scene = true
+shader = ExtResource( 5 )
+shader_param/aspect_ratio = 2.438
+shader_param/velocity = Vector2( 0.008, 0.01 )
+shader_param/radius = 0.902
+shader_param/starting_frequency = 3.0
+shader_param/starting_amplitude = 0.411
+shader_param/octaves = 2
+shader_param/main_color = Color( 4, 2, 1, 1 )
+shader_param/second_color = Color( 4, 2, 1, 1 )
+shader_param/third_color = Color( 0, 0, 0, 1 )
+shader_param/noise = SubResource( 3 )
+
+[sub_resource type="ShaderMaterial" id=6]
+resource_local_to_scene = true
+shader = ExtResource( 4 )
+shader_param/active = true
+shader_param/color = Color( 0.886275, 0.00392157, 0.00392157, 1 )
+
+[sub_resource type="CircleShape2D" id=10]
+resource_local_to_scene = true
+radius = 447.161
+
+[sub_resource type="Curve" id=2]
+min_value = -1.0
+_data = [ Vector2( 0.00380379, -0.418531 ), 0.0, 0.0, 0, 0, Vector2( 0.14962, 0.0898563 ), 5.8793, 8.52822, 0, 0, Vector2( 0.213018, 0.760783 ), 0.0, -4.17251, 0, 0, Vector2( 0.354607, -0.852636 ), 0.0, -0.629925, 0, 0, Vector2( 0.500423, -0.00319505 ), 2.49956, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 2 )
+
+[sub_resource type="ShaderMaterial" id=7]
+resource_local_to_scene = true
+shader = ExtResource( 3 )
+shader_param/strength = 0.5
+shader_param/curve = SubResource( 5 )
+
+[sub_resource type="CircleShape2D" id=13]
+resource_local_to_scene = true
+radius = 60.0
+
+[sub_resource type="CircleShape2D" id=12]
+resource_local_to_scene = true
+radius = 475.685
+
+[node name="RedGiant" instance=ExtResource( 1 )]
+mass = 8000.0
+color = Color( 1, 0.364706, 0.364706, 1 )
+
+[node name="Sun" parent="." index="0" instance=ExtResource( 2 )]
+
+[node name="White" parent="Sun" index="0"]
+modulate = Color( 1.11, 1.1, 1.2, 1 )
+material = SubResource( 9 )
+scale = Vector2( 2, 2 )
+
+[node name="center" parent="Vector" index="0"]
+position = Vector2( 487, 0 )
+
+[node name="arrow" parent="Vector/center" index="0"]
+material = SubResource( 6 )
+
+[node name="CollisionShape2D" parent="." index="2"]
+shape = SubResource( 10 )
+
+[node name="Sprite" parent="." index="3"]
+material = SubResource( 7 )
+
+[node name="CollisionShape2D" parent="ClickArea" index="0"]
+shape = SubResource( 13 )
+
+[node name="CollisionShape2D" parent="CollisionDecection" index="0"]
+shape = SubResource( 12 )
+
+[editable path="Sun"]

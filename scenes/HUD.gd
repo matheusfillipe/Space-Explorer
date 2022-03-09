@@ -4,6 +4,7 @@ export var data_update_time = 0.5
 
 signal time_scale_changed
 signal toggle_speeds
+signal toggle_gravity
 signal toggle_paths
 
 var display_gravity = false
@@ -77,14 +78,14 @@ func _on_gravity_toggled(button_pressed):
 	if button_pressed and display_velocity:
 		emit_signal("toggle_speeds", false)
 		speeds_label.set_pressed_no_signal(false)
-	emit_signal("toggle_forces", button_pressed)
+	emit_signal("toggle_gravity", button_pressed)
 	display_gravity = button_pressed
 	display_velocity = false
 
 
 func _on_velocity_toggled(button_pressed):
 	if button_pressed and display_gravity:
-		emit_signal("toggle_forces", false)
+		emit_signal("toggle_gravity", false)
 		gravity_label.set_pressed_no_signal(false)
 	emit_signal("toggle_speeds", button_pressed)
 	display_gravity = false

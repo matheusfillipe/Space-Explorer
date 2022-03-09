@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://scenes/World.gd" type="Script" id=1]
 [ext_resource path="res://objects/Stars/star1.tscn" type="PackedScene" id=2]
@@ -15,7 +15,13 @@
 [ext_resource path="res://objects/Refuel.tscn" type="PackedScene" id=13]
 [ext_resource path="res://effects/Explosion.tscn" type="PackedScene" id=14]
 [ext_resource path="res://effects/WaveEmitter.tscn" type="PackedScene" id=15]
-[ext_resource path="res://objects/KBody.gd" type="Script" id=16]
+[ext_resource path="res://objects/Stars/YellowDwarf.tscn" type="PackedScene" id=16]
+[ext_resource path="res://objects/Stars/RedDwarf.tscn" type="PackedScene" id=17]
+[ext_resource path="res://objects/Stars/WhiteDwarf.tscn" type="PackedScene" id=18]
+[ext_resource path="res://objects/Stars/RedGiant.tscn" type="PackedScene" id=19]
+[ext_resource path="res://objects/Stars/BrownDwarf.tscn" type="PackedScene" id=20]
+[ext_resource path="res://objects/Stars/RedSuperGiant.tscn" type="PackedScene" id=21]
+[ext_resource path="res://objects/Stars/BlueGiant.tscn" type="PackedScene" id=22]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -63,16 +69,16 @@ modulate = Color( 1.1, 1.1, 1.1, 1 )
 z_index = 10
 script = ExtResource( 12 )
 
-[node name="Places" type="Node2D" parent="."]
+[node name="Backgrounds" type="Node2D" parent="."]
 
-[node name="Nebula" type="Sprite" parent="Places"]
+[node name="Nebula" type="Sprite" parent="Backgrounds"]
 modulate = Color( 1, 1, 1, 0.47451 )
 material = SubResource( 2 )
 position = Vector2( -3381, 10107 )
 scale = Vector2( 8, 8 )
 texture = ExtResource( 10 )
 
-[node name="Nebula4" type="Sprite" parent="Places"]
+[node name="Nebula4" type="Sprite" parent="Backgrounds"]
 modulate = Color( 1, 1, 1, 0.568627 )
 material = SubResource( 2 )
 position = Vector2( 4843, 11590 )
@@ -80,7 +86,7 @@ rotation = 3.14159
 scale = Vector2( 8, 8 )
 texture = ExtResource( 10 )
 
-[node name="Nebula2" type="Sprite" parent="Places"]
+[node name="Nebula2" type="Sprite" parent="Backgrounds"]
 modulate = Color( 1, 1, 1, 0.447059 )
 material = SubResource( 2 )
 position = Vector2( 4455, 12799 )
@@ -88,174 +94,170 @@ rotation = 3.14159
 scale = Vector2( 8, 8 )
 texture = ExtResource( 10 )
 
-[node name="Nebula3" type="Sprite" parent="Places"]
+[node name="Nebula3" type="Sprite" parent="Backgrounds"]
 modulate = Color( 1, 1, 1, 0.756863 )
 material = SubResource( 2 )
 position = Vector2( -3167, 14044 )
 scale = Vector2( 8, 8 )
 texture = ExtResource( 10 )
 
-[node name="Player" parent="." instance=ExtResource( 7 )]
-position = Vector2( -838, 6323 )
-color = Color( 0.905882, 0.141176, 0.0823529, 1 )
-death_effect = ExtResource( 14 )
-
 [node name="Stars" type="Node2D" parent="."]
 
 [node name="star1" parent="Stars" instance=ExtResource( 2 )]
 position = Vector2( 3015, -811 )
 mass = 1000.0
-script = ExtResource( 16 )
 initial_velocity = Vector2( -500, 0 )
 color = Color( 0.560784, 0.890196, 1, 1 )
 
 [node name="star6" parent="Stars" instance=ExtResource( 2 )]
 position = Vector2( 4939, 346 )
 mass = 1000.0
-script = ExtResource( 16 )
 initial_velocity = Vector2( -500, 0 )
 color = Color( 0.94902, 0.486275, 0.843137, 1 )
 
 [node name="star10" parent="Stars" instance=ExtResource( 2 )]
 position = Vector2( 7711, -1132 )
 mass = 1000.0
-script = ExtResource( 16 )
 initial_velocity = Vector2( -500, 0 )
 color = Color( 0.94902, 0.486275, 0.843137, 1 )
 
 [node name="star19" parent="Stars" instance=ExtResource( 2 )]
 position = Vector2( -4949, 655 )
 mass = 1000.0
-script = ExtResource( 16 )
 initial_velocity = Vector2( -500, 0 )
 color = Color( 0.94902, 0.486275, 0.843137, 1 )
 
 [node name="star20" parent="Stars" instance=ExtResource( 2 )]
 position = Vector2( -3590, 932 )
 mass = 1000.0
-script = ExtResource( 16 )
 initial_velocity = Vector2( -500, 0 )
 color = Color( 0.94902, 0.486275, 0.843137, 1 )
 
 [node name="star21" parent="Stars" instance=ExtResource( 2 )]
 position = Vector2( -6912, 2039 )
 mass = 1000.0
-script = ExtResource( 16 )
 initial_velocity = Vector2( -500, 0 )
 color = Color( 0.94902, 0.486275, 0.843137, 1 )
 
 [node name="star22" parent="Stars" instance=ExtResource( 2 )]
 position = Vector2( -4898, 1938 )
 mass = 1000.0
-script = ExtResource( 16 )
 initial_velocity = Vector2( -500, 0 )
 color = Color( 0.94902, 0.486275, 0.843137, 1 )
 
 [node name="star11" parent="Stars" instance=ExtResource( 2 )]
 position = Vector2( 8753, 1791 )
 mass = 1000.0
-script = ExtResource( 16 )
 initial_velocity = Vector2( -500, 0 )
 color = Color( 0.94902, 0.486275, 0.843137, 1 )
 
 [node name="star2" parent="Stars" instance=ExtResource( 3 )]
 position = Vector2( 2286, 1345 )
 mass = 1000.0
-script = ExtResource( 16 )
 initial_velocity = Vector2( -100, -100 )
 color = Color( 0.94902, 0.486275, 0.843137, 1 )
 
 [node name="star12" parent="Stars" instance=ExtResource( 3 )]
 position = Vector2( 10551, 438 )
 mass = 1000.0
-script = ExtResource( 16 )
 initial_velocity = Vector2( -100, -100 )
 color = Color( 0.94902, 0.486275, 0.843137, 1 )
 
 [node name="star9" parent="Stars" instance=ExtResource( 3 )]
 position = Vector2( -3862, -688 )
 mass = 1000.0
-script = ExtResource( 16 )
 initial_velocity = Vector2( -100, -100 )
 color = Color( 0.94902, 0.486275, 0.843137, 1 )
 
 [node name="star7" parent="Stars" instance=ExtResource( 3 )]
 position = Vector2( 1685, 2903 )
 mass = 1000.0
-script = ExtResource( 16 )
 initial_velocity = Vector2( -100, -100 )
 color = Color( 0.501961, 1, 0.501961, 1 )
 
 [node name="star8" parent="Stars" instance=ExtResource( 3 )]
 position = Vector2( 6019, 3121 )
 mass = 1000.0
-script = ExtResource( 16 )
 initial_velocity = Vector2( -100, -100 )
 color = Color( 0.501961, 1, 0.501961, 1 )
 
 [node name="star3" parent="Stars" instance=ExtResource( 4 )]
 position = Vector2( -853, -521 )
 mass = 1000.0
-script = ExtResource( 16 )
 initial_velocity = Vector2( 100, 200 )
 color = Color( 1, 0.95, 0.5, 1 )
 
 [node name="star5" parent="Stars" instance=ExtResource( 4 )]
 position = Vector2( 4788, 2031 )
 mass = 1000.0
-script = ExtResource( 16 )
 initial_velocity = Vector2( 100, 200 )
 color = Color( 0.501961, 1, 0.501961, 1 )
 
 [node name="star14" parent="Stars" instance=ExtResource( 2 )]
 position = Vector2( -7708, 8464 )
 mass = 1000.0
-script = ExtResource( 16 )
 initial_velocity = Vector2( -500, 0 )
 color = Color( 0.94902, 0.486275, 0.843137, 1 )
 
 [node name="star15" parent="Stars" instance=ExtResource( 2 )]
 position = Vector2( -530, 9281 )
 mass = 1000.0
-script = ExtResource( 16 )
 initial_velocity = Vector2( -500, 0 )
 color = Color( 0.94902, 0.486275, 0.843137, 1 )
 
 [node name="star16" parent="Stars" instance=ExtResource( 3 )]
 position = Vector2( -3037, 15328 )
 mass = 1000.0
-script = ExtResource( 16 )
 initial_velocity = Vector2( -100, -100 )
 color = Color( 0.94902, 0.486275, 0.843137, 1 )
 
 [node name="star17" parent="Stars" instance=ExtResource( 3 )]
 position = Vector2( -3264, 10611 )
 mass = 1000.0
-script = ExtResource( 16 )
 initial_velocity = Vector2( -100, -100 )
 color = Color( 0.501961, 1, 0.501961, 1 )
 
 [node name="star18" parent="Stars" instance=ExtResource( 4 )]
 position = Vector2( -5706, 8490 )
 mass = 1000.0
-script = ExtResource( 16 )
 initial_velocity = Vector2( 100, 200 )
 color = Color( 0.501961, 1, 0.501961, 1 )
 
 [node name="star13" parent="Stars" instance=ExtResource( 4 )]
 position = Vector2( -5518, 3109 )
 mass = 1000.0
-script = ExtResource( 16 )
 initial_velocity = Vector2( 100, 200 )
 color = Color( 0.501961, 1, 0.501961, 1 )
 
 [node name="star4" parent="Stars" instance=ExtResource( 5 )]
 position = Vector2( -758, 2681 )
 mass = 1000.0
-script = ExtResource( 16 )
 initial_velocity = Vector2( 0, 100 )
 initial_rotation = 5.0
 color = Color( 0.501961, 1, 0.501961, 1 )
+
+[node name="Suns" type="Node2D" parent="."]
+
+[node name="BlueGiant" parent="Suns" instance=ExtResource( 22 )]
+position = Vector2( -21124, -17491 )
+
+[node name="BrownDwarf" parent="Suns" instance=ExtResource( 20 )]
+position = Vector2( -47299, -3372 )
+
+[node name="RedDwarf" parent="Suns" instance=ExtResource( 17 )]
+position = Vector2( -31573, -4872 )
+
+[node name="RedGiant" parent="Suns" instance=ExtResource( 19 )]
+position = Vector2( -38869, -17558 )
+
+[node name="RedSuperGiant" parent="Suns" instance=ExtResource( 21 )]
+position = Vector2( -51328, -23040 )
+
+[node name="WhiteDwarf" parent="Suns" instance=ExtResource( 18 )]
+position = Vector2( -14882, -5246 )
+
+[node name="YellowDwarf" parent="Suns" instance=ExtResource( 16 )]
+position = Vector2( -6599, -15878 )
 
 [node name="Refuels" type="Node2D" parent="."]
 
@@ -313,11 +315,16 @@ position = Vector2( 1123, 12836 )
 scale = Vector2( 20, 20 )
 capacity = 50.0
 
+[node name="Player" parent="." instance=ExtResource( 7 )]
+position = Vector2( -838, 6323 )
+color = Color( 0.905882, 0.141176, 0.0823529, 1 )
+death_effect = ExtResource( 14 )
+
 [node name="BlackHoles" type="Node2D" parent="."]
 
 [node name="BlackHole" parent="BlackHoles" instance=ExtResource( 9 )]
-position = Vector2( -6189, 15870 )
-script = ExtResource( 16 )
+position = Vector2( -7059, 16085 )
+mass = 12000.0
 
 [node name="WaveEmitter" parent="BlackHoles/BlackHole" instance=ExtResource( 15 )]
 lifetime = 0.0
@@ -333,10 +340,10 @@ spawn_props = {
 }
 
 [connection signal="time_scale_changed" from="HUD" to="." method="_on_HUD_time_scale_changed"]
+[connection signal="toggle_gravity" from="HUD" to="." method="_on_HUD_toggle_gravity"]
 [connection signal="toggle_paths" from="HUD" to="." method="_on_HUD_toggle_paths"]
 [connection signal="toggle_speeds" from="HUD" to="." method="_on_HUD_toggle_speeds"]
 [connection signal="visibility_changed" from="DrawCanvas" to="DrawCanvas" method="_on_DrawCanvas_visibility_changed"]
-[connection signal="body_entered" from="Player" to="Player" method="_on_KBody_body_entered"]
 [connection signal="body_entered" from="Stars/star1" to="Stars/star1" method="_on_KBody_body_entered"]
 [connection signal="body_entered" from="Stars/star6" to="Stars/star6" method="_on_KBody_body_entered"]
 [connection signal="body_entered" from="Stars/star10" to="Stars/star10" method="_on_KBody_body_entered"]
@@ -359,4 +366,4 @@ spawn_props = {
 [connection signal="body_entered" from="Stars/star18" to="Stars/star18" method="_on_KBody_body_entered"]
 [connection signal="body_entered" from="Stars/star13" to="Stars/star13" method="_on_KBody_body_entered"]
 [connection signal="body_entered" from="Stars/star4" to="Stars/star4" method="_on_KBody_body_entered"]
-[connection signal="body_entered" from="BlackHoles/BlackHole" to="BlackHoles/BlackHole" method="_on_KBody_body_entered"]
+[connection signal="body_entered" from="Player" to="Player" method="_on_KBody_body_entered"]

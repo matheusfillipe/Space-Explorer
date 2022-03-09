@@ -3,7 +3,7 @@ extends "res://objects/Body.gd"
 
 export var display_path = false
 export var display_velocity = false
-export var max_display_vector_scale = 5000
+export var max_display_vector_scale = 8000
 export var display_gravity = false
 export var initial_velocity = Vector2.ZERO
 export var initial_rotation = 0.0
@@ -17,7 +17,7 @@ var died = false
 const Explosion = preload("res://effects/ExplosionWithWave.tscn")
 const Refuel = preload("res://objects/Refuel.tscn")
 const velocity_arrow_divider = 100
-const gravity_arrow_divider = 10
+const gravity_arrow_divider = 100
 
 export(PackedScene) var death_effect = Explosion
 
