@@ -6,6 +6,7 @@ Proof of concept newtonian gravity simulator using godot's physics engine. You c
 ![image](https://user-images.githubusercontent.com/24435787/155859795-79f86775-3103-4981-804f-ea1106b0a4c9.png)
 ![Screenshot_20220227_033734](https://user-images.githubusercontent.com/24435787/155871498-7950d316-cb8d-46c0-a153-5ff0935ef996.png)
 
+Live demo at: https://space2d.herokuapp.com/
 
 ## Playing
 

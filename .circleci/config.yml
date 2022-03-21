@@ -1,0 +1,36 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: barichello/godot-ci
+    steps:
+      - checkout
+      - run:
+          name: Heroku setup
+          command: bash .circleci/setup-heroku.sh # run a script to set up Heroku
+      - run: |
+          mkdir -p ./build/html
+          mkdir -p ./build/windows
+          mkdir -p ./build/macos
+          mkdir -p ./build/linux
+      - run: godot --export HTML5 ./build/html/index.html
+      - run:
+          name: Heroku deploy
+          command: bash .circleci/deploy-heroku.sh
+      - run: godot --export "Windows Desktop" ./build/windows/cluennector.exe
+      - run: godot --export "Linux/X11" ./build/linux/cluennector
+      - run: godot --export "Mac OSX" ./build/macos/cluennector.dmg
+      - run:
+          name: Github release
+          command: bash .circleci/release.sh
+
+workflows:
+  build-workflow:
+    jobs:
+      - build:
+          filters:
+          branches:
+            ignore: /.*/
+          tags:
+            only: /^v[0-9]+(\.[0-9]+)*$/
