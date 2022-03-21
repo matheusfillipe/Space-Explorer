@@ -38,7 +38,6 @@ func _ready():
 		body.max_display_vector_scale = min(body.max_display_vector_scale, max_arrow_scale)
 		kbodies.append(body)
 
-	print(kbodies)
 	GlobalState.kbodies = kbodies
 	GlobalState.timescale = simulation_speed
 	canvas.visible = false

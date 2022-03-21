@@ -326,9 +326,6 @@ death_effect = ExtResource( 14 )
 position = Vector2( -7059, 16085 )
 mass = 12000.0
 
-[node name="WaveEmitter" parent="BlackHoles/BlackHole" instance=ExtResource( 15 )]
-lifetime = 0.0
-
 [node name="Waves" type="Node2D" parent="."]
 visible = false
 

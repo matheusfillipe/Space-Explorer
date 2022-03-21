@@ -9,6 +9,7 @@ export var initial_velocity = Vector2.ZERO
 export var initial_rotation = 0.0
 export var color = Color(.5, 1, .5)
 export var can_supernova = true
+export var absorb = false
 
 var tracked_path = PoolVector2Array()
 var has_mouse = false
@@ -69,7 +70,10 @@ func _on_CollisionDecection_body_entered(body):
 	if body == self:
 		return
 
-	if "can_supernova" in body and "died" in body:
+	if absorb:
+		mass += body.mass
+
+	if (not absorb and "can_supernova" in body and "died" in body) or body.absorb:
 		visible = false
 		sleeping = true
 		if body.mass >= mass and not body.died:

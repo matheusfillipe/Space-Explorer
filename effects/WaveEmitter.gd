@@ -13,8 +13,8 @@ var freeing = false
 
 func _ready():
 	period_timer.wait_time = period
-	life_timer.wait_time = lifetime
 	if lifetime > 0:
+		life_timer.wait_time = lifetime
 		life_timer.start()
 	spawn_wave()
 
