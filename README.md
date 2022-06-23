@@ -42,3 +42,18 @@ By hovering on stars you can see their information and if you click you will sta
 - [x] Control camera with mouse
 - [ ] Add refuel
 - [ ] Add levels!
+
+## IDEAS
+
+- [ ] godot gravity sim - 10 [0/3]
+  - [ ] giant stars have a life to explode or not
+  - [ ] Fuel consuming ballistics (explode stars and get random fuel proportional to their mass?) ??
+  - [ ] Start menu [0/3]
+    - [ ] Sandbox level [0/3]
+      - [ ] right click to add start
+      - [ ] Little star props menu
+      - [ ] Show vectors while editing
+    - [ ] Random generated level [0/1]
+      - [ ] ??
+    - [ ] Build win and linux releases
+
