@@ -1,3 +1,5 @@
+[![Cloudflare Pages](https://img.shields.io/endpoint?url=https://cloudflare-pages-badges.mattf.workers.dev//?projectName=space-explorer)](https://space-explorer.pages.dev/)
+
 # Gravity simulation demo
 
 Proof of concept newtonian gravity simulator using godot's physics engine. You can control a little ship in a 2D simulation.
