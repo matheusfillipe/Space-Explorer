@@ -319,6 +319,11 @@ capacity = 50.0
 position = Vector2( -838, 6323 )
 color = Color( 0.905882, 0.141176, 0.0823529, 1 )
 death_effect = ExtResource( 14 )
+fuel_consunption_rate = 3
+spin_fuel_consunption_rate = 0.5
+power = 12
+break_power = 4
+refuel_rate = 10
 
 [node name="BlackHoles" type="Node2D" parent="."]
 
@@ -332,9 +337,6 @@ visible = false
 [node name="WaveEmitter2" parent="Waves" instance=ExtResource( 15 )]
 position = Vector2( 498, 4877 )
 lifetime = 10.0
-spawn_props = {
-"lifetime": 10.0
-}
 
 [connection signal="time_scale_changed" from="HUD" to="." method="_on_HUD_time_scale_changed"]
 [connection signal="toggle_gravity" from="HUD" to="." method="_on_HUD_toggle_gravity"]

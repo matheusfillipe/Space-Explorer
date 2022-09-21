@@ -23,7 +23,7 @@ jobs:
       #     command: bash .circleci/deploy-heroku.sh
       - run: godot --export "Windows Desktop" ./build/windows/cluennector.exe
       - run: godot --export "Linux/X11" ./build/linux/cluennector
-      - run: godot --export "Mac OSX" ./build/macos/cluennector.dmg
+      - run: godot --export "Mac OSX" ./build/macos/cluennector.app
       - run:
           name: Github release
           command: bash .circleci/release.sh

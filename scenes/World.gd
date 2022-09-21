@@ -27,6 +27,7 @@ const simulation_speed_faker = 1
 
 var kbodies = []
 
+
 func _ready():
 	OS.low_processor_usage_mode = true
 
@@ -66,6 +67,7 @@ func _unhandled_input(event):
 	elif event.scancode in timescale_keymap:
 		simulation_speed = timescale_keymap[event.scancode]
 		GlobalState.timescale = simulation_speed
+
 
 func _on_HUD_time_scale_changed(value):
 	simulation_speed = value

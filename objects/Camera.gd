@@ -6,6 +6,10 @@ export var keyboard_zoom_multiplier = 1.01
 export var scroll_wheel_zoom_multiplier = 1.08
 export var drag_multiplier = 0.05
 
+onready var far_sprite = $ParallaxBackground/Far/Sprite
+onready var mid_sprite = $ParallaxBackground/Mid/Sprite
+onready var close_sprite = $ParallaxBackground/Close/Sprite
+
 onready var current_scene = get_tree().get_current_scene()
 onready var player = current_scene.get_node("Player")
 onready var hud = current_scene.get_node("HUD")
@@ -15,13 +19,25 @@ var drags = PoolVector2Array()
 var attached = true
 var paralax_layers = []
 
+
 func _ready():
+
+	# Change textures for some exports
+	match OS.get_name():
+		# "Android":
+		"HTML5":
+			far_sprite.texture = load("res://assets/bgfar.jpeg")
+			mid_sprite.texture = load("res://assets/bgmedium.jpeg")
+			close_sprite.texture = load("res://assets/bgclose.jpeg")
+
 	for layer in Utils.get_children_with_type(self, ParallaxLayer):
 		paralax_layers.append([layer, layer.motion_scale])
+
 
 func scale_click_areas():
 	for body in GlobalState.kbodies:
 		body.scale_click_area(zoom)
+
 
 func update_paralax():
 	"""Change paralax on zooming"""
@@ -31,6 +47,7 @@ func update_paralax():
 
 	# HACK This is so the paralax doesn't disappear when detached
 	global_position += Vector2(0, -10)
+
 
 func _process(delta):
 	var input_vector = Vector2.ZERO
@@ -88,6 +105,7 @@ func _process(delta):
 			return
 		global_position = track_object.global_position
 		hud.set_tracking(track_object)
+
 
 func _unhandled_input(event):
 	if event is InputEventScreenDrag:

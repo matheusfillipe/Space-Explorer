@@ -11,5 +11,5 @@ nvm use --lts
 
 branch=$(git rev-parse --abbrev-ref HEAD)
 name=$(basename $(git config remote.origin.url |sed "s/\.git$//") | sed "s/ /-/g" | tr '[:upper:]' '[:lower:]')
-npx wrangler pages project create unborn --production-branch "$branch" || true
+npx wrangler pages project create "$name" --production-branch "$branch" || true
 npx wrangler pages publish build/html --project-name "$name"
