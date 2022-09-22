@@ -30,6 +30,9 @@ func _ready():
 			mid_sprite.texture = load("res://assets/bgmedium.jpeg")
 			close_sprite.texture = load("res://assets/bgclose.jpeg")
 
+			# Increase modulation
+			close_sprite.modulate = Color(1, 1, 1, 1) * 5
+
 	for layer in Utils.get_children_with_type(self, ParallaxLayer):
 		paralax_layers.append([layer, layer.motion_scale])
 

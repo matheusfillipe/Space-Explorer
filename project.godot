@@ -13,6 +13,7 @@ config_version=4
 config/name="GravityDemo"
 run/main_scene="res://scenes/World.tscn"
 boot_splash/image="res://assets/front.png"
+boot_splash/bg_color=Color( 0.0666667, 0.0627451, 0.0627451, 1 )
 config/icon="res://icon.png"
 
 [autoload]
@@ -28,6 +29,7 @@ window/size/height=768
 [global]
 
 drag=false
+background=false
 
 [input]
 

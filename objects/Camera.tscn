@@ -11,18 +11,24 @@ resource_local_to_scene = true
 shader = ExtResource( 5 )
 shader_param/saturation = 0.9
 shader_param/alpha = 0.7
+shader_param/alpha_color = Color( 0, 0, 0, 1 )
+shader_param/alpha_threshold = 0.1
 
 [sub_resource type="ShaderMaterial" id=3]
 resource_local_to_scene = true
 shader = ExtResource( 5 )
 shader_param/saturation = 0.7
 shader_param/alpha = 0.5
+shader_param/alpha_color = null
+shader_param/alpha_threshold = 0.1
 
 [sub_resource type="ShaderMaterial" id=4]
 resource_local_to_scene = true
 shader = ExtResource( 5 )
 shader_param/saturation = 0.5
 shader_param/alpha = 0.1
+shader_param/alpha_color = Color( 0, 0, 0, 1 )
+shader_param/alpha_threshold = 0.1
 
 [node name="Camera2D" type="Camera2D"]
 show_behind_parent = true
