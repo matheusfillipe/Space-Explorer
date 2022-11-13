@@ -15,9 +15,9 @@ jobs:
       - run:
           name: Cloudflare deploy
           command: bash .circleci/deploy-cloudflare.sh
-      - run: godot --export "Windows Desktop" ./build/windows/cluennector.exe
-      - run: godot --export "Linux/X11" ./build/linux/cluennector
-      - run: godot --export "Mac OSX" ./build/macos/cluennector.app
+      - run: godot --export "Windows Desktop" ./build/windows/SpaceExplorer.exe
+      - run: godot --export "Linux/X11" ./build/linux/SpaceExplorer
+      - run: godot --export "Mac OSX" ./build/macos/SpaceExplorer.app
       - run:
           name: Github release
           command: bash .circleci/release.sh
