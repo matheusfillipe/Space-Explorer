@@ -30,6 +30,8 @@ window/size/height=768
 
 drag=false
 background=false
+etc=false
+"import etc"=false
 
 [input]
 
@@ -153,5 +155,6 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
+vram_compression/import_etc=true
 environment/default_clear_color=Color( 0, 0, 0, 1 )
 environment/default_environment="res://default_env.tres"
