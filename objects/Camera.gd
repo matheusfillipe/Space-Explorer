@@ -21,7 +21,6 @@ var paralax_layers = []
 
 
 func _ready():
-
 	# Change textures for some exports
 	match OS.get_name():
 		# "Android":
@@ -52,6 +51,18 @@ func update_paralax():
 	global_position += Vector2(0, -10)
 
 
+func _log(v: float) -> float:
+	"""Logarithmic function"""
+	if v < 5:
+		return v / 3
+	return log(v + 1)
+
+
+func _zoom_drag_speed_multiplier_curve(zoom: Vector2) -> Vector2:
+	"""Return a multiplier for the speed of the camera when zoomed in"""
+	return Vector2(_log(zoom.x), _log(zoom.y))
+
+
 func _process(delta):
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("cam_right") - Input.get_action_strength("cam_left")
@@ -64,7 +75,12 @@ func _process(delta):
 
 	if drags.size() > 0:
 		for input in drags:
-			global_position += input * speed * max(delta, 0.00166) * zoom
+			global_position += (
+				input
+				* speed
+				* max(delta, 0.00166)
+				* _zoom_drag_speed_multiplier_curve(zoom)
+			)
 		drags = PoolVector2Array()
 		attached = false
 

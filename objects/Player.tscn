@@ -282,7 +282,7 @@ position = Vector2( -50, 0 )
 scale = Vector2( 0.25, 0.2 )
 frames = SubResource( 3 )
 animation = "flame"
-frame = 13
+frame = 8
 playing = true
 
 [node name="flame_right" type="AnimatedSprite" parent="." index="1"]
@@ -294,7 +294,7 @@ rotation = -2.0944
 scale = Vector2( 0.105713, 0.0488803 )
 frames = SubResource( 3 )
 animation = "flame"
-frame = 19
+frame = 14
 playing = true
 
 [node name="flame_left" type="AnimatedSprite" parent="." index="2"]
@@ -306,7 +306,7 @@ rotation = 2.0944
 scale = Vector2( 0.105713, 0.0488803 )
 frames = SubResource( 3 )
 animation = "flame"
-frame = 12
+frame = 7
 playing = true
 
 [node name="arrow" parent="Vector/center" index="0"]

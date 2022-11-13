@@ -6,9 +6,6 @@ jobs:
       - image: barichello/godot-ci
     steps:
       - checkout
-      # - run:
-      #     name: Heroku setup
-      #     command: bash .circleci/setup-heroku.sh # run a script to set up Heroku
       - run: |
           mkdir -p ./build/html
           mkdir -p ./build/windows
@@ -18,9 +15,6 @@ jobs:
       - run:
           name: Cloudflare deploy
           command: bash .circleci/deploy-cloudflare.sh
-      # - run:
-      #     name: Heroku deploy
-      #     command: bash .circleci/deploy-heroku.sh
       - run: godot --export "Windows Desktop" ./build/windows/cluennector.exe
       - run: godot --export "Linux/X11" ./build/linux/cluennector
       - run: godot --export "Mac OSX" ./build/macos/cluennector.app

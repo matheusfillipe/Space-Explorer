@@ -41,7 +41,7 @@ By hovering on stars you can see their information and if you click you will sta
 
 - [ ] Find a better way to slow down the simulation
 - [ ] Fix body colisions instead of orbiting
-- [ ] Fix paralax background when zooming out
+- [x] Fix paralax background when zooming out
 - [x] Add animations for flames
 - [x] Control camera with mouse
 - [x] Add refuel
@@ -59,5 +59,5 @@ By hovering on stars you can see their information and if you click you will sta
       - [ ] Show vectors while editing
     - [ ] Random generated level [0/1]
       - [ ] ??
-    - [ ] Build win and linux releases
+    - [x] Build win and linux releases
 
